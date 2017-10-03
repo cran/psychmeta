@@ -190,66 +190,66 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
      if(!is.null(data)){
           data <- data.frame(data)
 
-          rxyi <- match_variables(call = call_full[[match("rxyi",  names(call_full))]], data = data)
+          rxyi <- match_variables(call = call_full[[match("rxyi", names(call_full))]], arg = rxyi, data = data)
 
-          n <- match_variables(call = call_full[[match("n",  names(call_full))]], data = data)
+          n <- match_variables(call = call_full[[match("n", names(call_full))]], arg = n, data = data)
 
           if(deparse(substitute(n_adj)) != "NULL")
-               n_adj <- match_variables(call = call_full[[match("n_adj",  names(call_full))]], data = data)
+               n_adj <- match_variables(call = call_full[[match("n_adj", names(call_full))]], arg = n_adj, data = data)
 
           if(deparse(substitute(construct_x)) != "NULL")
-               construct_x <- match_variables(call = call_full[[match("construct_x",  names(call_full))]], data = data)
+               construct_x <- match_variables(call = call_full[[match("construct_x", names(call_full))]], arg = construct_x, data = data)
 
           if(deparse(substitute(construct_y)) != "NULL")
-               construct_y <- match_variables(call = call_full[[match("construct_y",  names(call_full))]], data = data)
+               construct_y <- match_variables(call = call_full[[match("construct_y", names(call_full))]], arg = construct_y, data = data)
 
           if(deparse(substitute(measure_x)) != "NULL")
-               measure_x <- match_variables(call = call_full[[match("measure_x",  names(call_full))]], data = data)
+               measure_x <- match_variables(call = call_full[[match("measure_x", names(call_full))]], arg = measure_x, data = data)
 
           if(deparse(substitute(measure_y)) != "NULL")
-               measure_y <- match_variables(call = call_full[[match("measure_y",  names(call_full))]], data = data)
+               measure_y <- match_variables(call = call_full[[match("measure_y", names(call_full))]], arg = measure_y, data = data)
 
           if(deparse(substitute(rxx)) != "NULL")
-               rxx <- match_variables(call = call_full[[match("rxx",  names(call_full))]], data = data)
+               rxx <- match_variables(call = call_full[[match("rxx", names(call_full))]], arg = rxx, data = data)
 
           if(deparse(substitute(rxx_restricted)) != "NULL")
-               rxx_restricted <- match_variables(call = call_full[[match("rxx_restricted",  names(call_full))]], data = data)
+               rxx_restricted <- match_variables(call = call_full[[match("rxx_restricted", names(call_full))]], arg = rxx_restricted, data = data)
 
           if(deparse(substitute(ryy)) != "NULL")
-               ryy <- match_variables(call = call_full[[match("ryy",  names(call_full))]], data = data)
+               ryy <- match_variables(call = call_full[[match("ryy", names(call_full))]], arg = ryy, data = data)
 
           if(deparse(substitute(ryy_restricted)) != "NULL")
-               ryy_restricted <- match_variables(call = call_full[[match("ryy_restricted",  names(call_full))]], data = data)
+               ryy_restricted <- match_variables(call = call_full[[match("ryy_restricted", names(call_full))]], arg = ryy_restricted, data = data)
 
           if(deparse(substitute(ux)) != "NULL")
-               ux <- match_variables(call = call_full[[match("ux",  names(call_full))]], data = data)
+               ux <- match_variables(call = call_full[[match("ux", names(call_full))]], arg = ux, data = data)
 
           if(deparse(substitute(ux_observed)) != "NULL")
-               ux_observed <- match_variables(call = call_full[[match("ux_observed",  names(call_full))]], data = data)
+               ux_observed <- match_variables(call = call_full[[match("ux_observed", names(call_full))]], arg = ux_observed, data = data)
 
           if(deparse(substitute(uy)) != "NULL")
-               uy <- match_variables(call = call_full[[match("uy",  names(call_full))]], data = data)
+               uy <- match_variables(call = call_full[[match("uy", names(call_full))]], arg = uy, data = data)
 
           if(deparse(substitute(uy_observed)) != "NULL")
-               uy_observed <- match_variables(call = call_full[[match("uy_observed",  names(call_full))]], data = data)
+               uy_observed <- match_variables(call = call_full[[match("uy_observed", names(call_full))]], arg = uy_observed, data = data)
 
           if(deparse(substitute(sample_id)) != "NULL")
-               sample_id <- match_variables(call = call_full[[match("sample_id",  names(call_full))]], data = data)
+               sample_id <- match_variables(call = call_full[[match("sample_id", names(call_full))]], arg = sample_id, data = data)
 
-          if(deparse(substitute(moderators)) != "NULL")
-               moderators <- match_variables(call = call_full[[match("moderators",  names(call_full))]], data = data)
+          if(deparse(substitute(moderators))[1] != "NULL")
+               moderators <- match_variables(call = call_full[[match("moderators", names(call_full))]], arg = moderators, data = data)
 
           if(deparse(substitute(correct_rr_x)) != "NULL")
-               correct_rr_x <- match_variables(call = call_full[[match("correct_rr_x",  names(call_full))]], data = data)
+               correct_rr_x <- match_variables(call = call_full[[match("correct_rr_x", names(call_full))]], arg = correct_rr_x, data = data)
 
           if(deparse(substitute(correct_rr_y)) != "NULL")
-               correct_rr_y <- match_variables(call = call_full[[match("correct_rr_y",  names(call_full))]], data = data)
+               correct_rr_y <- match_variables(call = call_full[[match("correct_rr_y", names(call_full))]], arg = correct_rr_y, data = data)
 
           if(deparse(substitute(indirect_rr_x)) != "NULL")
-               indirect_rr_x <- match_variables(call = call_full[[match("indirect_rr_x",  names(call_full))]], data = data)
+               indirect_rr_x <- match_variables(call = call_full[[match("indirect_rr_x", names(call_full))]], arg = indirect_rr_x, data = data)
 
           if(deparse(substitute(indirect_rr_y)) != "NULL")
-               indirect_rr_y <- match_variables(call = call_full[[match("indirect_rr_y",  names(call_full))]], data = data)
+               indirect_rr_y <- match_variables(call = call_full[[match("indirect_rr_y", names(call_full))]], arg = indirect_rr_y, data = data)
      }
 
      if(!is.null(moderators)){
@@ -288,18 +288,15 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
           if(length(indirect_rr_y) != length(rxyi)) indirect_rr_y <- scalar_arg_warning(arg = indirect_rr_y, arg_name = "indirect_rr_y")
      }
 
-     if(!is.null(construct_x)){
-          construct_x <- as.character(construct_x)
-     }else{
-          construct_x <- rep("X", sum(valid_r))
-     }
+     if(is.null(construct_x)) construct_x <- rep("X", length(rxyi))
+     if(is.null(construct_y)) construct_y <- rep("Y", length(rxyi))
 
-     if(!is.null(construct_y)){
-          construct_y <- as.character(construct_y)
-     }else{
-          construct_y <- rep("Y", sum(valid_r))
-     }
+     if(!is.null(sample_id)) sample_id <- as.character(sample_id)[valid_r]
+     if(!is.null(measure_x)) measure_x <- as.character(measure_x)[valid_r]
+     if(!is.null(measure_y)) measure_y <- as.character(measure_y)[valid_r]
 
+     construct_x <- as.character(construct_x)[valid_r]
+     construct_y <- as.character(construct_y)[valid_r]
 
      correct_rxx <- scalar_arg_warning(arg = correct_rxx, arg_name = "correct_rxx")
      correct_rr_x <- manage_arglength(x = correct_rr_x, y = rxyi)[valid_r]
@@ -326,7 +323,7 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
      es_data <- data.frame(rxyi = rxyi, n = n)
      es_data$n_adj <- n_adj
 
-     if(treat_as_d & !is.null(d)){
+     if(es_d & !is.null(d)){
           d <- d[valid_r]
           n1 <- n1[valid_r]
           n2 <- n2[valid_r]
@@ -491,22 +488,27 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
           if(length(cat_moderators) > 1){
                cat_moderators_temp <- cat_moderators
           }else{
-               cat_moderators_temp <- rep(cat_moderators_temp, ncol(complete_moderators))
-          }
-
-          for(i in 1:length(str_compmod_temp)){
-               for(j in levels(factor(duplicates$sample_id))){
-                    if(!cat_moderators_temp[i])
-                         duplicates[duplicates$sample_id == j, str_compmod_temp[i]] <- mean(duplicates[duplicates$sample_id == j, str_compmod_temp[i]])
+               if(!is.null(complete_moderators)){
+                    cat_moderators_temp <- rep(cat_moderators, ncol(complete_moderators))
+               }else{
+                    cat_moderators_temp <- complete_moderators
                }
           }
+
+          if(!is.null(str_compmod_temp))
+               for(i in 1:length(str_compmod_temp)){
+                    for(j in levels(factor(duplicates$sample_id))){
+                         if(!cat_moderators_temp[i])
+                              duplicates[duplicates$sample_id == j, str_compmod_temp[i]] <- mean(duplicates[duplicates$sample_id == j, str_compmod_temp[i]])
+                    }
+               }
 
           collapsed_data_list <- by(1:length(duplicates$Analysis_ID), duplicates$Analysis_ID, function(i){
                out <- .remove_dependency(sample_id = "sample_id", es_data = str_es_data,
                                          data_x = str_data_x, data_y = str_data_y, collapse_method=collapse_method, retain_original = FALSE,
                                          intercor=intercor, partial_intercor = partial_intercor, construct_x = "construct_x", construct_y = "construct_y",
                                          measure_x = "measure_x", measure_y = "measure_y",
-                                         es_metric="r", data=duplicates[i,], ma_method = ma_method, .dx_internal_designation = d)
+                                         es_metric = "r", data = duplicates[i,], ma_method = ma_method, .dx_internal_designation = d)
                cbind(duplicates[i, c("Analysis_ID", "Analysis_Type", str_moderators, str_compmod_temp)][rep(1, nrow(out)),], out)
           })
 
@@ -649,7 +651,7 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
                ad_y_int <- ad_obj_list_int[[construct_pair[i][1]]][["ad_obj_y"]]
 
                out <- ma_r_ic(rxyi = "rxyi", n = "n", n_adj = "n_adj", sample_id = "sample_id", hs_override = hs_override,
-                              wt_type = "sample_size", error_type = "mean",
+                              wt_type = wt_type, error_type = error_type,
                               correct_bias = correct_bias, correct_rxx = correct_rxx, correct_ryy = correct_ryy,
                               correct_rr_x = "correct_rr_x", correct_rr_y = "correct_rr_y",
                               indirect_rr_x = "indirect_rr_x", indirect_rr_y = "indirect_rr_y",
@@ -774,6 +776,81 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL,
                               correct_rr_x = data$correct_rr_x[1], correct_rr_y = data$correct_rr_y[1],
                               indirect_rr_x = data$indirect_rr_x[1], indirect_rr_y = data$indirect_rr_y[1],
                               residual_ads = residual_ads, sign_rxz = sign_rxz, sign_ryz = sign_ryz, decimals = decimals)
+
+               if(es_d){
+                    ad_method <- out$artifact_distribution$method_details["ad_method"]
+                    rr_method <- out$artifact_distribution$method_details["range_restriction"]
+
+                    if(rr_method == "Corrected for univariate direct range restriction in Y (i.e., Case II)" |
+                       rr_method == "Corrected for univariate indirect range restriction in Y (i.e., Case IV)" |
+                       rr_method == "Made no corrections for range restriction"){
+
+                         if(rr_method == "Corrected for univariate direct range restriction in Y (i.e., Case II)"){
+                              if(ad_method == "Interactive method"){
+                                   uy <- ad_obj_y[["ux"]]
+                                   uy <- wt_mean(x = uy[,"Value"], wt = uy[,"Weight"])
+                              }else{
+                                   uy <- ad_obj_y["ux", "mean"]
+                              }
+                              rxyi <- out$barebones$meta_table$mean_r
+                              for(i in 1:length(out$barebones$escalc_list)){
+                                   pi <- wt_mean(x = out$barebones$escalc_list[[i]]$pi, wt = out$barebones$escalc_list[[i]]$n_adj)
+                                   pqa <- pi * (1 - pi) * ((1 / uy^2 - 1) * rxyi[i]^2 + 1)
+                                   pqa[pqa > .25] <- .25
+                                   out$barebones$escalc_list[[i]]$pa_ad <- convert_pq_to_p(pq = pqa)
+                              }
+                         }
+
+                         if(rr_method == "Corrected for univariate indirect range restriction in Y (i.e., Case IV)"){
+                              if(ad_method == "Interactive method"){
+                                   up <- ad_obj_y[["ut"]]
+                                   up <- wt_mean(x = up[,"Value"], wt = up[,"Weight"])
+
+                                   qyi <- ad_obj_y[["qxi"]]
+                                   qyi <- wt_mean(x = qyi[,"Value"], wt = qyi[,"Weight"])
+                              }else{
+                                   up <- ad_obj_y["ut", "mean"]
+                                   qyi <- ad_obj_y["qxi", "mean"]
+                              }
+                              rxpi <- out$barebones$meta_table$mean_r / qyi
+                              for(i in 1:length(out$barebones$escalc_list)){
+                                   pi <- wt_mean(x = out$barebones$escalc_list[[i]]$pi, wt = out$barebones$escalc_list[[i]]$n_adj)
+                                   pqa <- pi * (1 - pi) * ((1 / up^2 - 1) * rxpi[i]^2 + 1)
+                                   pqa[pqa > .25] <- .25
+                                   out$barebones$escalc_list[[i]]$pa_ad <- convert_pq_to_p(pq = pqa)
+                              }
+                         }
+
+                         if(rr_method == "Made no corrections for range restriction"){
+                              for(i in 1:length(out$barebones$escalc_list))
+                                   out$barebones$escalc_list[[i]]$pa_ad <- out$barebones$escalc_list[[i]]$pi
+                         }
+                    }else{
+                         if(rr_method == "Corrected for univariate indirect range restriction in Y (i.e., Case IV)"){
+                              if(ad_method == "Interactive method"){
+                                   ug <- ad_obj_x[["ut"]]
+                                   ug <- wt_mean(x = ug[,"Value"], wt = ug[,"Weight"])
+                              }else{
+                                   ug <- ad_obj_x["ut", "mean"]
+                              }
+                         }else{
+                              if(ad_method == "Interactive method"){
+                                   ug <- ad_obj_x[["ux"]]
+                                   ug <- wt_mean(x = ug[,"Value"], wt = ug[,"Weight"])
+                              }else{
+                                   ug <- ad_obj_x["ux", "mean"]
+                              }
+                         }
+
+                         for(i in 1:length(out$barebones$escalc_list)){
+                              pi <- wt_mean(x = out$barebones$escalc_list[[i]]$pi, wt = out$barebones$escalc_list[[i]]$n_adj)
+                              pqa <- 1 / ug^2 * pi * (1 - pi)
+                              pqa[pqa > .25] <- .25
+                              out$barebones$escalc_list[[i]]$pa_ad <- convert_pq_to_p(pq = pqa)
+                         }
+                    }
+               }
+
                out
           })
 

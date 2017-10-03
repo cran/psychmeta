@@ -84,7 +84,7 @@ ma_d_ic <- function(d, n1, n2 = NULL, n_adj = NULL, sample_id = NULL,
                     correct_rGg = FALSE, correct_ryy = TRUE,
                     correct_rr_g = FALSE, correct_rr_y = TRUE,
                     indirect_rr_g = TRUE, indirect_rr_y = TRUE,
-                    rGg = NULL, pi = NULL, pa = .5,
+                    rGg = NULL, pi = NULL, pa = NULL,
                     ryy = NULL, ryy_restricted = TRUE,
                     uy = NULL, uy_observed = TRUE,
                     sign_rgz = 1, sign_ryz = 1,
@@ -121,48 +121,48 @@ ma_d_ic <- function(d, n1, n2 = NULL, n_adj = NULL, sample_id = NULL,
      if(!is.null(data)){
           data <- data.frame(data)
 
-          d <- match_variables(call = call_full[[match("d",  names(call_full))]], data = data)
+          d <- match_variables(call = call_full[[match("d",  names(call_full))]], arg = d, data = data)
 
-          n1 <- match_variables(call = call_full[[match("n1",  names(call_full))]], data = data)
+          n1 <- match_variables(call = call_full[[match("n1",  names(call_full))]], arg = n1, data = data)
 
           if(deparse(substitute(n2)) != "NULL")
-               n2 <- match_variables(call = call_full[[match("n2",  names(call_full))]], data = data)
+               n2 <- match_variables(call = call_full[[match("n2",  names(call_full))]], arg = n2, data = data)
 
           if(deparse(substitute(n_adj)) != "NULL")
-               n_adj <- match_variables(call = call_full[[match("n_adj",  names(call_full))]], data = data)
+               n_adj <- match_variables(call = call_full[[match("n_adj",  names(call_full))]], arg = n_adj, data = data)
 
           if(deparse(substitute(rGg)) != "NULL")
-               rGg <- match_variables(call = call_full[[match("rGg",  names(call_full))]], data = data)
+               rGg <- match_variables(call = call_full[[match("rGg",  names(call_full))]], arg = rGg, data = data)
 
           if(deparse(substitute(ryy)) != "NULL")
-               ryy <- match_variables(call = call_full[[match("ryy",  names(call_full))]], data = data)
+               ryy <- match_variables(call = call_full[[match("ryy",  names(call_full))]], arg = ryy, data = data)
 
           if(deparse(substitute(ryy_restricted)) != "NULL")
-               ryy_restricted <- match_variables(call = call_full[[match("ryy_restricted",  names(call_full))]], data = data)
+               ryy_restricted <- match_variables(call = call_full[[match("ryy_restricted",  names(call_full))]], arg = ryy_restricted, data = data)
 
           if(deparse(substitute(uy)) != "NULL")
-               uy <- match_variables(call = call_full[[match("uy",  names(call_full))]], data = data)
+               uy <- match_variables(call = call_full[[match("uy",  names(call_full))]], arg = uy, data = data)
 
           if(deparse(substitute(uy_observed)) != "NULL")
-               uy_observed <- match_variables(call = call_full[[match("uy_observed",  names(call_full))]], data = data)
+               uy_observed <- match_variables(call = call_full[[match("uy_observed",  names(call_full))]], arg = uy_observed, data = data)
 
           if(deparse(substitute(sample_id)) != "NULL")
-               sample_id <- match_variables(call = call_full[[match("sample_id",  names(call_full))]], data = data)
+               sample_id <- match_variables(call = call_full[[match("sample_id",  names(call_full))]], arg = sample_id, data = data)
 
-          if(deparse(substitute(moderators)) != "NULL")
-               moderators <- match_variables(call = call_full[[match("moderators",  names(call_full))]], data = data)
+          if(deparse(substitute(moderators))[1] != "NULL")
+               moderators <- match_variables(call = call_full[[match("moderators",  names(call_full))]], arg = moderators, data = data)
 
           if(deparse(substitute(correct_rr_g)) != "NULL")
-               correct_rr_g <- match_variables(call = call_full[[match("correct_rr_g",  names(call_full))]], data = data)
+               correct_rr_g <- match_variables(call = call_full[[match("correct_rr_g",  names(call_full))]], arg = correct_rr_g, data = data)
 
           if(deparse(substitute(correct_rr_y)) != "NULL")
-               correct_rr_y <- match_variables(call = call_full[[match("correct_rr_y",  names(call_full))]], data = data)
+               correct_rr_y <- match_variables(call = call_full[[match("correct_rr_y",  names(call_full))]], arg = correct_rr_y, data = data)
 
           if(deparse(substitute(indirect_rr_g)) != "NULL")
-               indirect_rr_g <- match_variables(call = call_full[[match("indirect_rr_g",  names(call_full))]], data = data)
+               indirect_rr_g <- match_variables(call = call_full[[match("indirect_rr_g",  names(call_full))]], arg = indirect_rr_g, data = data)
 
           if(deparse(substitute(indirect_rr_y)) != "NULL")
-               indirect_rr_y <- match_variables(call = call_full[[match("indirect_rr_y",  names(call_full))]], data = data)
+               indirect_rr_y <- match_variables(call = call_full[[match("indirect_rr_y",  names(call_full))]], arg = indirect_rr_y, data = data)
      }
 
      ## Reliabilities of grouping variables are correlations, so we will square them to put them in the same metric as other reliability statistics
@@ -173,23 +173,29 @@ ma_d_ic <- function(d, n1, n2 = NULL, n_adj = NULL, sample_id = NULL,
      }
 
      if(!is.null(pi)){
-          if(length(pi) == 1) pi <- rep(pi, length(d))
-          if(length(pi) > 1 & length(pi) < length(d)){
+          if(length(pi) > 1 & length(pi) < length(d))
                stop("pi must either be a scalar or a vector with as many elements as there are d values", call. = FALSE)
-          }
+          if(length(pi) == 1) pi <- rep(pi, length(d))
+
      }else{
           pi <- rep(NA, length(d))
      }
+
+     if(all(!correct_rr_g)) pa <- NULL
 
      if(!is.null(pa)){
-          if(length(pa) == 1) pa <- rep(pa, length(d))
-          if(length(pa) > 1 & length(pa) < length(d)){
+          if(length(pa) > 1 & length(pa) < length(d))
                stop("pa must either be a scalar or a vector with as many elements as there are d values", call. = FALSE)
-
-          }
+          if(length(pa) == 1) pa <- rep(pa, length(d))
      }else{
-          pi <- rep(NA, length(d))
+          correct_rr_g <- FALSE
+          pa <- rep(NA, length(d))
      }
+
+     if(any(correct_rr_g)) pa[!correct_rr_g] <- NA
+
+     if(any(!is.na(pi))) if(any(pi[!is.na(pi)] <= 0 | pi[!is.na(pi)] >= 1)) stop("Incumbent subgroup proportions must be between 0 and 1 (exclusive)", call. = FALSE)
+     if(any(!is.na(pa))) if(any(pa[!is.na(pa)] <= 0 | pa[!is.na(pa)] >= 1)) stop("Applicant subgroup proportions must be between 0 and 1 (exclusive)", call. = FALSE)
 
      if(is.null(n2)) n2 <- rep(NA, length(n1))
      n <- n1
@@ -205,12 +211,8 @@ ma_d_ic <- function(d, n1, n2 = NULL, n_adj = NULL, sample_id = NULL,
      rxyi <- convert_es.q_d_to_r(d = d, p = pi)
 
      ## The variance of a dichotomous variable is pq = p(1-p), so we will estimate u ratios accordingly
-     if(!is.null(pi) & !is.null(pa)){
-          ux <- sqrt((pi * (1 - pi)) / (pa * (1 - pa)))
-     }else{
-          if(is.null(pa)) pa <- rep(.5, length(d))
-          ux <- rep(NA, length(d))
-     }
+     ux <- sqrt((pi * (1 - pi)) / (pa * (1 - pa)))
+     pa[is.na(pa)] <- pi[is.na(pa)]
 
      ## Compute meta-analysis
      out <- ma_r_ic(rxyi = rxyi, n = n, n_adj = n_adj, sample_id = sample_id,
