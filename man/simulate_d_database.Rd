@@ -92,6 +92,7 @@ sr_params <- list(1, .5)
 simulate_d_database(k = 5, n_params = n_params, rho_params = rho_params,
                     mu_params = mu_params, sigma_params = sigma_params,
                     rel_params = rel_params, sr_params = sr_params,
+                    k_items = c(4, 4),
                     group_names = NULL, var_names = c("y1", "y2"),
                     show_applicant = TRUE, keep_vars = c("y1", "y2"), decimals = 2)
 }
