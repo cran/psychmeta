@@ -392,17 +392,17 @@ compute_dmod_par <- function(referent_int, referent_slope,
 
      paramMat <- cbind(paramMat, .x_int = paramMat[,"x_int"])
      tooSmall <- !is.infinite(paramMat[,"x_int"]) & paramMat[,"x_int"] < paramMat[,"focal_mean_x"] - 5 * paramMat[,"focal_sd_x"]
-     tooBig <- !is.infinite(paramMat[,"x_int"]) & paramMat[,"x_int"] < paramMat[,"focal_mean_x"] + 5 * paramMat[,"focal_sd_x"]
+     tooBig <- !is.infinite(paramMat[,"x_int"]) & paramMat[,"x_int"] > paramMat[,"focal_mean_x"] + 5 * paramMat[,"focal_sd_x"]
      paramMat[tooSmall, ".x_int"] <- paramMat[tooSmall, "focal_mean_x"] - 5 * paramMat[tooSmall, "focal_sd_x"]
      paramMat[tooBig, ".x_int"] <- paramMat[tooBig, "focal_mean_x"] + 5 * paramMat[tooBig, "focal_sd_x"]
 
      neginf2Int <- apply(paramMat, 1, function(x)
           if(!is.na(x["x_int"])){
-               pnorm(x["x_int"], mean = x["focal_sd_x"], sd = x["focal_sd_x"])
+               pnorm(x["x_int"], mean = x["focal_mean_x"], sd = x["focal_sd_x"])
           }else{0})
      int2Inf <- apply(paramMat, 1, function(x)
           if(!is.na(x["x_int"])){
-               pnorm(x["x_int"], mean = x["focal_sd_x"], sd = x["focal_sd_x"], lower.tail = FALSE)
+               pnorm(x["x_int"], mean = x["focal_mean_x"], sd = x["focal_sd_x"], lower.tail = FALSE)
           }else{0})
      neginf2Int[useFullCdf] <- 1
      int2Inf[useFullCdf] <- 1
@@ -412,8 +412,8 @@ compute_dmod_par <- function(referent_int, referent_slope,
                if(zapsmall(x["focal_min_x"]) == zapsmall(x["x_int"])){
                     0
                }else{
-                    pnorm(x["x_int"], mean = x["focal_sd_x"], sd = x["focal_sd_x"]) -
-                         pnorm(x["focal_min_x"], mean = x["focal_sd_x"], sd = x["focal_sd_x"])
+                    pnorm(x["x_int"], mean = x["focal_mean_x"], sd = x["focal_sd_x"]) -
+                         pnorm(x["focal_min_x"], mean = x["focal_mean_x"], sd = x["focal_sd_x"])
                }
           }else{0})
      propAboveInt <- apply(paramMat, 1, function(x)
@@ -421,8 +421,8 @@ compute_dmod_par <- function(referent_int, referent_slope,
                if(zapsmall(x["focal_max_x"]) == zapsmall(x["x_int"])){
                     0
                }else{
-                    pnorm(x["focal_max_x"], mean = x["focal_sd_x"], sd = x["focal_sd_x"]) -
-                         pnorm(x["x_int"], mean = x["focal_sd_x"], sd = x["focal_sd_x"])
+                    pnorm(x["focal_max_x"], mean = x["focal_mean_x"], sd = x["focal_sd_x"]) -
+                         pnorm(x["x_int"], mean = x["focal_mean_x"], sd = x["focal_sd_x"])
                }
           }else{0})
 
@@ -448,6 +448,7 @@ compute_dmod_par <- function(referent_int, referent_slope,
                                focal_max_x = x[".x_int"], signed = TRUE)
           }else{0}
      }) / rescaleCdfLo
+
      dModHi <- apply(paramMat, 1, function(x){
           if(!is.na(x[".x_int"])){
                .integrate_dmod(referent_int = x["referent_int"], referent_slope = x["referent_slope"],
@@ -537,7 +538,7 @@ compute_dmod_par <- function(referent_int, referent_slope,
 #' @param data Data frame containing the data to be analyzed (if not a data frame, must be an object convertible to a data frame via the as.data.frame function).
 #' The data set must contain a criterion variable, at least one predictor variable, and a categorical variable that identifies the group to which each case (i.e., row) in the data set belongs.
 #' @param group Name or column-index number of the variable that identifies group membership in the data set.
-#' @param predictors Name(s) or column-index number(s) of the the predictor variable(s) in the data set. No predictor can be a factor-type variable.
+#' @param predictors Name(s) or column-index number(s) of the predictor variable(s) in the data set. No predictor can be a factor-type variable.
 #' If multiple predictors are specified, they will be combined into a regression-weighted composite that will be carried forward to compute \eqn{d_{Mod}}{d_Mod} effect sizes.
 #' \itemize{
 #'   \item {\emph{Note}: If weights other than regression weights should be used to combine the predictors into a composite, the user must manually compute such a composite,
@@ -550,9 +551,9 @@ compute_dmod_par <- function(referent_int, referent_slope,
 #' @param parametric Logical argument that indicates whether \eqn{d_{Mod}}{d_Mod} should be computed using an assumed normal distribution (\code{TRUE}; default) or observed frequencies (\code{FALSE}).
 #' @param rescale_cdf Logical argument that indicates whether parametric \eqn{d_{Mod}}{d_Mod} results should be rescaled to account for using a cumulative density < 1 in the computations (\code{TRUE}; default) or not (\code{FALSE}).
 #' @param bootstrap Logical argument that indicates whether \eqn{d_{Mod}}{d_Mod} should be bootstrapped (\code{TRUE}; default) or not (\code{FALSE}).
-#' @param boot_iter Number of bootstrap interations to compute (default = \code{1000}).
-#' @param stratify Logical argument that indicates whether the random bootstrap sampling should be stratified (\code{TRUE}) or unstratefied (\code{FALSE}; default).
-#' @param empirical_ci Logical argument that indicates whether the bootrapped confidence invervals should be computed from the observed empirical distributions (\code{TRUE}) or computed using
+#' @param boot_iter Number of bootstrap iterations to compute (default = \code{1000}).
+#' @param stratify Logical argument that indicates whether the random bootstrap sampling should be stratified (\code{TRUE}) or unstratified (\code{FALSE}; default).
+#' @param empirical_ci Logical argument that indicates whether the bootstrapped confidence invervals should be computed from the observed empirical distributions (\code{TRUE}) or computed using
 #' bootstrapped means and standard errors via the normal-theory approach (\code{FALSE}).
 #' @param cross_validate_wts Only relevant when multiple predictors are specified and bootstrapping is performed.
 #' Logical argument that indicates whether regression weights derived from the full sample should be used to combine predictors in the bootstrapped samples (\code{TRUE})
@@ -641,9 +642,9 @@ compute_dmod <- function(data, group, predictors, criterion,
                     cross_validate_wts = cross_validate_wts)
 
      if(!is.data.frame(data)) data <- as.data.frame(data)
-     group <- match_variables(call = call[[match("group", names(call))]], arg = group, data = data)
-     predictors <- match_variables(call = call[[match("predictors", names(call))]], arg = predictors, data = data)
-     criterion <- match_variables(call = call[[match("criterion", names(call))]], arg = criterion, data = data)
+     group <- match_variables(call = call[[match("group", names(call))]], arg = group, arg_name = "group", data = data)
+     predictors <- match_variables(call = call[[match("predictors", names(call))]], arg = predictors, arg_name = "predictors", data = data)
+     criterion <- match_variables(call = call[[match("criterion", names(call))]], arg = criterion, arg_name = "criterion", data = data)
 
      if(!is.null(dim(group))){
           if(ncol(group) > 1){
@@ -656,7 +657,7 @@ compute_dmod <- function(data, group, predictors, criterion,
           }
      }
 
-     data <- data.frame(G = group, Y = criterion, predictors)
+     data <- data.frame(G = group, Y = unlist(criterion), predictors)
      xNames <- colnames(data)[-(1:2)]
 
      groupNames <- levels(factor(data[,"G"]))
@@ -734,7 +735,7 @@ compute_dmod <- function(data, group, predictors, criterion,
                                          X = as.numeric(apply(as.matrix(data_i[,xNames]), 1,
                                                               function(x) regModel[-1] %*% x))))
           }else{
-               data_i <- data.frame(data_i)
+               data_i <- data.frame(cbind(data_i[,1:2], X = unlist(data_i[,3])))
           }
 
           regList <- by(data_i, INDICES = data_i$G, function(x) lm(Y ~ X, data = x)$coeff)
@@ -762,18 +763,6 @@ compute_dmod <- function(data, group, predictors, criterion,
                                        focal_max_x = maxVec[focalId],
                                        focal_names = focal_id_vec,
                                        rescale_cdf = rescale_cdf)$point_estimate
-
-               referent_int = intVec[referentId]
-               referent_slope = slopeVec[referentId]
-               focal_int = intVec[focalId]
-               focal_slope = slopeVec[focalId]
-               focal_mean_x = xMeanVec[focalId]
-               focal_sd_x = xSdVec[focalId]
-               referent_sd_y = ySdVec[referentId]
-               focal_min_x = minVec[focalId]
-               focal_max_x = maxVec[focalId]
-               focal_names = focal_id_vec
-               rescale_cdf = rescale_cdf
           }else{
                out <- data.frame(t(apply(t(focalId), 2, function(x){
                    x_out <-  compute_dmod_npar(referent_int = intVec[referentId],
@@ -829,7 +818,6 @@ compute_dmod <- function(data, group, predictors, criterion,
           class(out) <- c("psychmeta", "dmod", "npar")
      }
 
-     out
 }
 
 

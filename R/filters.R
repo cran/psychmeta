@@ -125,11 +125,23 @@ screen_u <- function(u_vec, art_name = "u ratio"){
 #' ## filter_rel(rel_vec = c(0, .8), wt_vec = c(80, 100))
 #' ## filter_rel(rel_vec = c(.7, .8), wt_vec = c(-80, 100))
 filter_rel <- function(rel_vec, wt_vec){
-     keep_id <- !is.na(rel_vec)
-     keep_id <- keep_id & !is.na(wt_vec)
-     if(any(keep_id)){
-          if(!is.numeric(rel_vec)) stop("Reliability values must be numeric", call. = FALSE)
-          keep_id[keep_id] <- is.finite(rel_vec[keep_id]) & abs(rel_vec[keep_id]) <= 1 & abs(rel_vec[keep_id]) > 0 & wt_vec[keep_id] >= 0
+     if(!is.null(rel_vec)){
+          if(!is.null(wt_vec)){
+               keep_id <- !is.na(rel_vec)
+               keep_id <- keep_id & !is.na(wt_vec)
+               if(any(keep_id)){
+                    if(!is.numeric(rel_vec)) stop("Reliability values must be numeric", call. = FALSE)
+                    keep_id[keep_id] <- is.finite(rel_vec[keep_id]) & abs(rel_vec[keep_id]) <= 1 & abs(rel_vec[keep_id]) > 0 & wt_vec[keep_id] >= 0
+               }
+          }else{
+               keep_id <- !is.na(rel_vec)
+               if(any(keep_id)){
+                    if(!is.numeric(rel_vec)) stop("Reliability values must be numeric", call. = FALSE)
+                    keep_id[keep_id] <- is.finite(rel_vec[keep_id]) & abs(rel_vec[keep_id]) <= 1 & abs(rel_vec[keep_id]) > 0
+               }
+          }
+     }else{
+          keep_id <- FALSE
      }
      keep_id
 }
@@ -150,11 +162,23 @@ filter_rel <- function(rel_vec, wt_vec){
 #' ## filter_u(u_vec = c(0, .8), wt_vec = c(80, 100))
 #' ## filter_u(u_vec = c(.7, .8), wt_vec = c(-80, 100))
 filter_u <- function(u_vec, wt_vec){
-     keep_id <- !is.na(u_vec)
-     keep_id <- keep_id & !is.na(wt_vec)
-     if(any(keep_id)){
-          if(!is.numeric(u_vec)) stop("u ratios must be numeric", call. = FALSE)
-          keep_id[keep_id] <- is.finite(u_vec[keep_id]) & u_vec[keep_id] > 0 & wt_vec[keep_id] >= 0
+     if(!is.null(u_vec)){
+          if(!is.null(wt_vec)){
+               keep_id <- !is.na(u_vec)
+               keep_id <- keep_id & !is.na(wt_vec)
+               if(any(keep_id)){
+                    if(!is.numeric(u_vec)) stop("u ratios must be numeric", call. = FALSE)
+                    keep_id[keep_id] <- is.finite(u_vec[keep_id]) & u_vec[keep_id] > 0 & wt_vec[keep_id] >= 0
+               }
+          }else{
+               keep_id <- !is.na(u_vec)
+               if(any(keep_id)){
+                    if(!is.numeric(u_vec)) stop("u ratios must be numeric", call. = FALSE)
+                    keep_id[keep_id] <- is.finite(u_vec[keep_id]) & u_vec[keep_id] > 0
+               }
+          }
+     }else{
+          keep_id <- FALSE
      }
      keep_id
 }
@@ -575,3 +599,25 @@ convert_consistency2reltype <- function(consistency){
      }
 }
 
+
+#' Filter a list to remove NULL entries
+#'
+#' @param x A list
+#'
+#' @return A list with NULL entries removed.
+#' @export
+#'
+#' @keywords internal
+filter_listnonnull <- function(x){
+     if(length(x) == 0) x <- NULL
+     if(!is.list(x)){
+          x
+     }else{
+          x <- x[!unlist(lapply(x, function(i){length(i) == 0}))]
+          if(length(x) == 0){
+               NULL
+          }else{
+               x
+          }
+     }
+}
