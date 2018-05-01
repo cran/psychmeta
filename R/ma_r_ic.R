@@ -331,7 +331,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      n_rxxa <- if(!is.null(rxx)){if(any(!rxx_restricted)){n[!rxx_restricted]}else{NULL}}else{NULL}
      rxxi <-   if(!is.null(rxx)){if(any(rxx_restricted)){rxx[rxx_restricted]}else{NULL}}else{NULL}
      n_rxxi <- if(!is.null(rxx)){if(any(rxx_restricted)){n[rxx_restricted]}else{NULL}}else{NULL}
-     ux <-     if(!is.null(ux)){if(any(ux_observed)){ux[ux_observed]}else{NULL}}else{NULL}
+     .ux <-    if(!is.null(ux)){if(any(ux_observed)){ux[ux_observed]}else{NULL}}else{NULL}
      n_ux <-   if(!is.null(ux)){if(any(ux_observed)){n[ux_observed]}else{NULL}}else{NULL}
      ut <-     if(!is.null(ux)){if(any(!ux_observed)){ux[!ux_observed]}else{NULL}}else{NULL}
      n_ut <-   if(!is.null(ux)){if(any(!ux_observed)){n[!ux_observed]}else{NULL}}else{NULL}
@@ -342,7 +342,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      if(is.null(ad_x_int))
           ad_x_int <- suppressWarnings(create_ad_supplemental(ad_type = "int", rxxa = rxxa, n_rxxa = n_rxxa, wt_rxxa = n_rxxa, rxxa_type = rxxa_type,
                                                               rxxi = rxxi, n_rxxi = n_rxxi, wt_rxxi = n_rxxi, rxxi_type = rxxi_type,
-                                                              ux = ux, ni_ux = n_ux, wt_ux = n_ux,
+                                                              ux = .ux, ni_ux = n_ux, wt_ux = n_ux,
                                                               ut = ut, ni_ut = n_ut, wt_ut = n_ut,
                                                               var_unbiased = var_unbiased,
                                                               estimate_rxxa = estimate_rxxa, estimate_rxxi = estimate_rxxi,
@@ -352,7 +352,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      if(is.null(ad_x_tsa))
           ad_x_tsa <- suppressWarnings(create_ad_supplemental(ad_type = "tsa", rxxa = rxxa, n_rxxa = n_rxxa, rxxa_type = rxxa_type,
                                                               rxxi = rxxi, n_rxxi = n_rxxi, rxxi_type = rxxi_type,
-                                                              ux = ux, ni_ux = n_ux,
+                                                              ux = .ux, ni_ux = n_ux,
                                                               ut = ut, ni_ut = n_ut,
                                                               var_unbiased = var_unbiased,
                                                               estimate_rxxa = estimate_rxxa, estimate_rxxi = estimate_rxxi,
@@ -364,7 +364,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      n_ryya <- if(!is.null(ryy)){if(any(!ryy_restricted)){n[!ryy_restricted]}else{NULL}}else{NULL}
      ryyi <-   if(!is.null(ryy)){if(any(ryy_restricted)){ryy[ryy_restricted]}else{NULL}}else{NULL}
      n_ryyi <- if(!is.null(ryy)){if(any(ryy_restricted)){n[ryy_restricted]}else{NULL}}else{NULL}
-     uy <-     if(!is.null(uy)){if(any(uy_observed)){uy[uy_observed]}else{NULL}}else{NULL}
+     .uy <-    if(!is.null(uy)){if(any(uy_observed)){uy[uy_observed]}else{NULL}}else{NULL}
      n_uy <-   if(!is.null(uy)){if(any(uy_observed)){n[uy_observed]}else{NULL}}else{NULL}
      up <-     if(!is.null(uy)){if(any(!uy_observed)){uy[!uy_observed]}else{NULL}}else{NULL}
      n_up <-   if(!is.null(uy)){if(any(!uy_observed)){n[!uy_observed]}else{NULL}}else{NULL}
@@ -375,7 +375,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      if(is.null(ad_y_int))
           ad_y_int <- suppressWarnings(create_ad_supplemental(ad_type = "int", rxxa = ryya, n_rxxa = n_ryya, wt_rxxa = n_ryya, rxxa_type = ryya_type,
                                                               rxxi = ryyi, n_rxxi = n_ryyi, wt_rxxi = n_ryyi, rxxi_type = ryyi_type,
-                                                              ux = uy, ni_ux = n_uy, wt_ux = n_uy,
+                                                              ux = .uy, ni_ux = n_uy, wt_ux = n_uy,
                                                               ut = up, ni_ut = n_up, wt_ut = n_up,
                                                               var_unbiased = var_unbiased,
                                                               estimate_rxxa = estimate_rxxa, estimate_rxxi = estimate_rxxi,
@@ -385,7 +385,7 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      if(is.null(ad_y_tsa))
           ad_y_tsa <- suppressWarnings(create_ad_supplemental(ad_type = "tsa", rxxa = ryya, n_rxxa = n_ryya, rxxa_type = ryya_type,
                                                               rxxi = ryyi, n_rxxi = n_ryyi, rxxi_type = ryyi_type,
-                                                              ux = uy, ni_ux = n_uy,
+                                                              ux = .uy, ni_ux = n_uy,
                                                               ut = up, ni_ut = n_up,
                                                               var_unbiased = var_unbiased,
                                                               estimate_rxxa = estimate_rxxa, estimate_rxxi = estimate_rxxi,
@@ -1050,9 +1050,13 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
 
           if(k == 1){
                var_rtpa <- sd_rtpa <- NA
-               se_rtpa <- sd_e_tp_a
-               ci_tp_a <- confidence(mean = mean_rtpa, sd = var_e_tp_a^.5, k = 1, conf_level = conf_level, conf_method = conf_method)
                var_rho_tp_a <- sd_rho_tp_a <- NA
+               se_rtpa <- sd_e_tp_a
+               ci_tp_a <- confidence(mean = mean_rtpa, sd = var_e_tp_a^.5, k = 1, conf_level = conf_level, conf_method = "norm")
+
+               # se_rtpa <- NA
+               # ci_tp_a <- cbind(NA, NA)
+               # colnames(ci_tp_a) <- paste("CI", c("LL", "UL"), round(conf_level * 100), sep = "_")
           }else{
                se_rtpa <- sd_rtpa / sqrt(k)
                ci_tp_a <- confidence(mean = mean_rtpa, sd = var_rtpa^.5, k = k, conf_level = conf_level, conf_method = conf_method)
@@ -1118,9 +1122,13 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
 
           if(k == 1){
                var_rxpa <- sd_rxpa <- NA
-               se_rxpa <- sd_e_xp_a
-               ci_xp_a <- confidence(mean = mean_rxpa, sd = var_e_xp_a^.5, k = 1, conf_level = conf_level, conf_method = conf_method)
                var_rho_xp_a <- sd_rho_xp_a <- NA
+               se_rxpa <- sd_e_xp_a
+               ci_xp_a <- confidence(mean = mean_rxpa, sd = var_e_xp_a^.5, k = 1, conf_level = conf_level, conf_method = "norm")
+
+               # se_rxpa <- NA
+               # ci_xp_a <- cbind(NA, NA)
+               # colnames(ci_xp_a) <- paste("CI", c("LL", "UL"), round(conf_level * 100), sep = "_")
           }else{
                se_rxpa <- sd_rxpa / sqrt(k)
                ci_xp_a <- confidence(mean = mean_rxpa, sd = var_rxpa^.5, k = k, conf_level = conf_level, conf_method = conf_method)
@@ -1185,9 +1193,13 @@ ma_r_ic <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
 
           if(k == 1){
                var_rtya <- sd_rtya <- NA
-               se_rtya <- sd_e_ty_a
-               ci_ty_a <- confidence(mean = mean_rtya, sd = var_e_ty_a^.5, k = 1, conf_level = conf_level, conf_method = conf_method)
                var_rho_ty_a <- sd_rho_ty_a <- NA
+               se_rtya <- sd_e_ty_a
+               ci_ty_a <- confidence(mean = mean_rtya, sd = var_e_ty_a^.5, k = 1, conf_level = conf_level, conf_method = "norm")
+
+               # se_rtya <- NA
+               # ci_ty_a <- cbind(NA, NA)
+               # colnames(ci_ty_a) <- paste("CI", c("LL", "UL"), round(conf_level * 100), sep = "_")
           }else{
                se_rtya <- sd_rtya / sqrt(k)
                ci_ty_a <- confidence(mean = mean_rtya, sd = var_rtya^.5, k = k, conf_level = conf_level, conf_method = conf_method)
