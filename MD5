@@ -1,6 +1,6 @@
-ca18076910974e3b46386868485d5ae6 *DESCRIPTION
-2539c641c370d24919360c28559e7a12 *NAMESPACE
-566e8afcf5681bb57865ca1056b8fb7f *NEWS
+600d605508247d00c0fe8a2f34961e8b *DESCRIPTION
+376c695cb1f5f4530f50c7d355f85b68 *NAMESPACE
+acb296454ae28f438166b869039cf06b *NEWS
 71098888a3133aed647a8ad578275635 *R/adjust_n.R
 bac6345aa764ae65660ff18897780fe9 *R/composites.R
 3235a7bef7a29310ad15e651fb598596 *R/compute_dmod.R
@@ -33,13 +33,13 @@ dbe736f513f2431de00e7df24200328e *R/heterogeneity.R
 fbf08c8b7b1663106bf0063b42045c48 *R/impute_artifacts_wrapper.R
 26590bbc94bfe5175b9c2d85a70f5b0e *R/intervals.R
 b2c7a0ad482b58ccfcdfb58fdd75bc8e *R/itemize_scales.R
-b61b6626b3ef7163ff24e2ecccdf062a *R/lm_mat.R
+ed81097e6db1a1ace8c047efebc58b23 *R/lm_mat.R
 642e15605e4e9ae59657b722ffb9ea21 *R/ma_d.R
 bbd8e265cf79f234e3051dbf7dab7276 *R/ma_d_ad.R
 c417d2e26b013e9ab31005873b2e8d29 *R/ma_d_bb.R
 2d9711daf2ceceb7386904ea7e5b7e86 *R/ma_d_ic.R
 00d171bc78f4be9cf1ae9748f2ca4117 *R/ma_d_order2.R
-e0f81ef3ab416789f50dc9ff08d9b13a *R/ma_generic.R
+dc3dbd41de92bd880da1320baf7fabc7 *R/ma_generic.R
 8a26474d6aafa24fcb608ce4b62966aa *R/ma_r.R
 3cb674745dfde6a9a69871c794274aed *R/ma_r_ad.R
 ce34b5bc874a32754c46c8f12073b3b9 *R/ma_r_ad_bvdrr.R
@@ -64,7 +64,7 @@ e1385cecf38eca5c7508c08b082f2ee7 *R/methods_dplyr_ma_table.R
 18c9e47824c165d4ff78526835d6279a *R/methods_reattribute.R
 4384558327318a9f25530f58c7505e23 *R/methods_summary.R
 299dedaf6afe30d96b4498ced2675b6e *R/mix_matrix.R
-41d9ebb58f2744903294080b32f791b4 *R/output.R
+7f4d8d28827ce229a7d12455e14a7db6 *R/output.R
 113d803b36577b30b5611e62e9804198 *R/plotting.R
 3927972a6d5e25e066c3bb8a54626b21 *R/psychmeta.R
 6a757f9a54b3a8c82b0e6d197a322b7a *R/remove_dependency.R
@@ -105,7 +105,7 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 638141ef6d26ef39b689301832af4ed1 *inst/CITATION
 fa5c80ab28ccb2d4256ba79ef136bb1b *inst/doc/overview.R
 9694af8ba8e727e2cb8c3b44438638b4 *inst/doc/overview.Rmd
-3947b91e53ef57e6d9c4f9cc666dcd73 *inst/doc/overview.html
+2e4cd488336451acf588450186f444d0 *inst/doc/overview.html
 723bb11263aa5a6cf928971f22783443 *inst/templates/header.tex
 80294a2ba424c33ef4457260df125a88 *inst/templates/reference_docx.docx
 398161b0cfea256fb85a2ad0071d6fb2 *inst/templates/reference_docx_landscape.docx
