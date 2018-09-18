@@ -1,3 +1,31 @@
+Changes in Version 2.2.0 (2018-09-18)
+=====================================
+- Added support for separately compositing measures of constructs and the constructs' facets. Arguments for 'facet_x' and 'facet_y' have been added to ma_r() and ma_d() so that more comprehensive output tables can be generated.
+
+- Stability fixes for data management within the ma_r() function.
+
+- Added checks for missing and infinite values to the ma_generic() function.
+
+
+Changes in Version 2.1.12 (2018-09-07)
+=====================================
+- Bug fix for managing reliability types that have been incidentally converted from characters into factors.
+
+
+Changes in Version 2.1.11 (2018-08-30)
+=====================================
+- Bug fix for create_ad() with interactive method when all sample sizes are NA.
+ 
+- Bug fix for ma_r_ad() with individual artifact distributions supplied. 
+
+
+Changes in Version 2.1.10 (2018-08-24)
+=====================================
+- Bug fix for using output of metabulate() in Rmarkdown documents. 
+
+- Bug fix for meta-analyses of effect sizes that have been averaged or composited. 
+
+
 Changes in Version 2.1.9 (2018-08-22)
 =====================================
 - Increased the stability of artifact-distribution meta-analyses with moderators computed using the ma_r() function. 
