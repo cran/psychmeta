@@ -1,10 +1,10 @@
 Package: psychmeta
 Type: Package
 Title: Psychometric Meta-Analysis Toolkit
-Version: 2.3.3
-Date: 2019-04-11
+Version: 2.3.4
+Date: 2019-12-18
 Authors@R: c(person("Jeffrey A.", "Dahlke", role = c("aut", "cre"),
-                     email = "dahlk068@umn.edu"),
+                     email = "jdahlke@humrro.org"),
               person("Brenton M.", "Wiernik", role = "aut", email = "brenton@psychmeta.com"),
               person("Michael T.", "Brannick", role = "ctb", comment = "Testing"),
               person("Jack", "Kostal", role = "ctb", comment = "Code for reshape_mat2dat function"),
@@ -24,7 +24,7 @@ Imports: dplyr, stats, methods, MASS, boot, tmvtnorm, tibble, reshape2,
 Suggests: RefManageR, rmarkdown, knitr
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-04-11 17:15:20 UTC; jeffreydahlke
+Packaged: 2019-12-19 00:17:59 UTC; jeffreydahlke
 Author: Jeffrey A. Dahlke [aut, cre],
   Brenton M. Wiernik [aut],
   Michael T. Brannick [ctb] (Testing),
@@ -32,6 +32,6 @@ Author: Jeffrey A. Dahlke [aut, cre],
   Sean Potter [ctb] (Testing; Code for cumulative and leave1out plots),
   John Sakaluk [ctb] (Code for funnel and forest plots),
   Yuejia (Mandy) Teng [ctb] (Testing)
-Maintainer: Jeffrey A. Dahlke <dahlk068@umn.edu>
+Maintainer: Jeffrey A. Dahlke <jdahlke@humrro.org>
 Repository: CRAN
-Date/Publication: 2019-04-12 13:42:37 UTC
+Date/Publication: 2019-12-19 17:20:02 UTC

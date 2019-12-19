@@ -428,8 +428,9 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  get_ad(ma_obj, ma_method = "ic")
 
 ## ---- eval=FALSE---------------------------------------------------------
-#  # Write meta-analysis tables to a file called "Meta-analysis table.rtf"
-#  metabulate(ma_obj, file = "Meta-analysis table.rtf")
+#  # Write meta-analysis tables to a Word file called "Meta-analysis table.docx"
+#  metabulate(ma_obj, file = "Meta-analysis table.docx",
+#             output_format = "word", output_dir = tempdir())
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # Create funnel and forest plots
@@ -439,7 +440,7 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  # Extract plots for viewing
 #  out_plots <- get_plots(ma_obj)
 #  out_plots$funnel$`analysis id: 1`$barebones
-#  out_plots$forest$`analysis id: 1`$barebones
+#  out_plots$forest$`analysis id: 1`$moderated$barebones
 #  
 #  # The sensitivity_cumulative() and sensitivity_leave1out() functions also produce plots.
 #  out_plots$leave1out$`analysis id: 1`$barebones$plots
