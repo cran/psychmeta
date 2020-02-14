@@ -3,6 +3,11 @@
 # psychmeta
 ## Psychometric Meta-Analysis Toolkit
 
+[![CRAN Version](https://r-pkg.org/badges/version/psychmeta)](https://cran.r-project.org/package=psychmeta "CRAN version")
+[![Build Status](https://travis-ci.org/psychmeta/psychmeta.svg?branch=master)](https://travis-ci.org/psychmeta/psychmeta "Build status")
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/psychmeta)](https://cranlogs.r-pkg.org/badges/grand-total/psychmeta "Total downloads")
+[![Monthly Downloads](https://cranlogs.r-pkg.org/badges/psychmeta)](https://cranlogs.r-pkg.org/badges/psychmeta "Monthly downloads")
+
 ## Overview
 The `psychmeta` package provides tools for computing bare-bones and psychometric meta-analyses and for generating psychometric data for use in meta-analysis simulations. Currently, the package supports bare-bones, individual-correction, and artifact-distribution methods for meta-analyzing correlations and *d* values. Please refer to the overview vignette `vignette("overview", package = "psychmeta")` for an introduction to `psychmeta`'s functions and workflows.
 
@@ -17,8 +22,8 @@ install.packages("psychmeta")
 
 Development versions of `psychmeta` from [GitHub](https://github.com/jadahlke/psychmeta) reflect updates made to the package between official CRAN releases. The GitHub release can be installed with the following code:
 ```r
-install.packages("devtools")
-devtools::install_github("psychmeta/psychmeta")
+install.packages("remotes")
+remotes::install_github("psychmeta/psychmeta")
 ```
 
 ## Citing `psychmeta`

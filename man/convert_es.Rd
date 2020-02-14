@@ -4,18 +4,28 @@
 \alias{convert_es}
 \title{Convert effect sizes and compute confidence intervals}
 \usage{
-convert_es(es, input_es = c("r", "d", "delta", "g", "t", "p.t", "F",
-  "p.F", "chisq", "p.chisq", "or", "lor", "Fisherz", "A", "auc", "cles"),
-  output_es = c("r", "d", "A", "auc", "cles"), n1 = NULL, n2 = NULL,
-  df1 = NULL, df2 = NULL, sd1 = NULL, sd2 = NULL,
-  correct_bias = TRUE, conf_level = 0.95)
+convert_es(
+  es,
+  input_es = c("r", "d", "delta", "g", "t", "p.t", "F", "p.F", "chisq", "p.chisq", "or",
+    "lor", "Fisherz", "A", "auc", "cles"),
+  output_es = c("r", "d", "A", "auc", "cles"),
+  n1 = NULL,
+  n2 = NULL,
+  df1 = NULL,
+  df2 = NULL,
+  sd1 = NULL,
+  sd2 = NULL,
+  tails = 2,
+  correct_bias = TRUE,
+  conf_level = 0.95
+)
 }
 \arguments{
 \item{es}{Vector of effect sizes to convert.}
 
-\item{input_es}{Metric of input effect sizes. Currently supports correlations, Cohen's \emph{d}, independent samples \emph{t} values (or their \emph{p} values), two-group one-way ANOVA \emph{F} values (or their \emph{p} values), 1df \eqn{\chi^{2}}{\chi-squared} values (or their \emph{p} values), odds ratios, log odds ratios, Fisher \emph{z}, and the common language effect size (CLES, A, AUC).}
+\item{input_es}{Scalar. Metric of input effect sizes. Currently supports correlations, Cohen's \emph{d}, independent samples \emph{t} values (or their \emph{p} values), two-group one-way ANOVA \emph{F} values (or their \emph{p} values), 1df \eqn{\chi^{2}}{\chi-squared} values (or their \emph{p} values), odds ratios, log odds ratios, Fisher \emph{z}, and the common language effect size (CLES, A, AUC).}
 
-\item{output_es}{Metric of output effect sizes. Currently supports correlations, Cohen's \emph{d} values, and common language effect sizes (CLES, A, AUC).}
+\item{output_es}{Scalar. Metric of output effect sizes. Currently supports correlations, Cohen's \emph{d} values, and common language effect sizes (CLES, A, AUC).}
 
 \item{n1}{Vector of total sample sizes or sample sizes of group 1 of the two groups being contrasted.}
 
@@ -28,6 +38,8 @@ convert_es(es, input_es = c("r", "d", "delta", "g", "t", "p.t", "F",
 \item{sd1}{Vector of pooled (within-group) standard deviations or standard deviations of group 1 of the two groups being contrasted.}
 
 \item{sd2}{Vector of standard deviations of group 2 of the two groups being contrasted.}
+
+\item{tails}{Vector of the tails for \emph{p} values when \code{input_es = "p.t"}. Can be `2` (defualt) or `1`.}
 
 \item{correct_bias}{Logical argument that determines whether to correct output effect sizes and error-variance estimates for small-sample bias (\code{TRUE}) or not (\code{FALSE}) when computing confidence intervals.}
 

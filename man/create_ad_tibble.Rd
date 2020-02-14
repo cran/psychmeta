@@ -5,30 +5,77 @@
 \alias{create_ad_list}
 \title{Create a tibble of artifact distributions by construct}
 \usage{
-create_ad_tibble(ad_type = c("tsa", "int"), n = NULL,
-  sample_id = NULL, construct_x = NULL, facet_x = NULL,
-  measure_x = NULL, construct_y = NULL, facet_y = NULL,
-  measure_y = NULL, rxx = NULL, rxx_restricted = TRUE,
-  rxx_type = "alpha", k_items_x = NA, ryy = NULL,
-  ryy_restricted = TRUE, ryy_type = "alpha", k_items_y = NA,
-  ux = NULL, ux_observed = TRUE, uy = NULL, uy_observed = TRUE,
-  estimate_rxxa = TRUE, estimate_rxxi = TRUE, estimate_ux = TRUE,
-  estimate_ut = TRUE, moderators = NULL, cat_moderators = TRUE,
+create_ad_tibble(
+  ad_type = c("tsa", "int"),
+  n = NULL,
+  sample_id = NULL,
+  construct_x = NULL,
+  facet_x = NULL,
+  measure_x = NULL,
+  construct_y = NULL,
+  facet_y = NULL,
+  measure_y = NULL,
+  rxx = NULL,
+  rxx_restricted = TRUE,
+  rxx_type = "alpha",
+  k_items_x = NA,
+  ryy = NULL,
+  ryy_restricted = TRUE,
+  ryy_type = "alpha",
+  k_items_y = NA,
+  ux = NULL,
+  ux_observed = TRUE,
+  uy = NULL,
+  uy_observed = TRUE,
+  estimate_rxxa = TRUE,
+  estimate_rxxi = TRUE,
+  estimate_ux = TRUE,
+  estimate_ut = TRUE,
+  moderators = NULL,
+  cat_moderators = TRUE,
   moderator_type = c("simple", "hierarchical", "none"),
-  construct_order = NULL, supplemental_ads = NULL, data = NULL,
-  control = control_psychmeta(), ...)
+  construct_order = NULL,
+  supplemental_ads = NULL,
+  data = NULL,
+  control = control_psychmeta(),
+  ...
+)
 
-create_ad_list(ad_type = c("tsa", "int"), n = NULL, sample_id = NULL,
-  construct_x = NULL, facet_x = NULL, measure_x = NULL,
-  construct_y = NULL, facet_y = NULL, measure_y = NULL, rxx = NULL,
-  rxx_restricted = TRUE, rxx_type = "alpha", k_items_x = NA,
-  ryy = NULL, ryy_restricted = TRUE, ryy_type = "alpha",
-  k_items_y = NA, ux = NULL, ux_observed = TRUE, uy = NULL,
-  uy_observed = TRUE, estimate_rxxa = TRUE, estimate_rxxi = TRUE,
-  estimate_ux = TRUE, estimate_ut = TRUE, moderators = NULL,
-  cat_moderators = TRUE, moderator_type = c("simple", "hierarchical",
-  "none"), construct_order = NULL, supplemental_ads = NULL,
-  data = NULL, control = control_psychmeta(), ...)
+create_ad_list(
+  ad_type = c("tsa", "int"),
+  n = NULL,
+  sample_id = NULL,
+  construct_x = NULL,
+  facet_x = NULL,
+  measure_x = NULL,
+  construct_y = NULL,
+  facet_y = NULL,
+  measure_y = NULL,
+  rxx = NULL,
+  rxx_restricted = TRUE,
+  rxx_type = "alpha",
+  k_items_x = NA,
+  ryy = NULL,
+  ryy_restricted = TRUE,
+  ryy_type = "alpha",
+  k_items_y = NA,
+  ux = NULL,
+  ux_observed = TRUE,
+  uy = NULL,
+  uy_observed = TRUE,
+  estimate_rxxa = TRUE,
+  estimate_rxxi = TRUE,
+  estimate_ux = TRUE,
+  estimate_ut = TRUE,
+  moderators = NULL,
+  cat_moderators = TRUE,
+  moderator_type = c("simple", "hierarchical", "none"),
+  construct_order = NULL,
+  supplemental_ads = NULL,
+  data = NULL,
+  control = control_psychmeta(),
+  ...
+)
 }
 \arguments{
 \item{ad_type}{Type of artifact distributions to be computed: Either "tsa" for Taylor series approximation or "int" for interactive.}
@@ -40,7 +87,7 @@ create_ad_list(ad_type = c("tsa", "int"), n = NULL, sample_id = NULL,
 \item{construct_x, construct_y}{Vector of construct names for constructs initially designated as "X" or "Y".}
 
 \item{facet_x, facet_y}{Vector of facet names for constructs initially designated as "X" or "Y".
-Facet names "global", "overall", and "total" are reserved to indicate observations that represent effect sizes that have already been composited or that represent construct-level measurements rather than facet-level measurements. 
+Facet names "global", "overall", and "total" are reserved to indicate observations that represent effect sizes that have already been composited or that represent construct-level measurements rather than facet-level measurements.
 To avoid double-compositing, any observation with one of these reserved names will only be eligible for auto-compositing with other such observations and will not be combined with narrow facets.}
 
 \item{measure_x, measure_y}{Vector of names for measures associated with constructs initially designated as "X" or "Y".}

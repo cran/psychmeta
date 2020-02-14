@@ -4,12 +4,22 @@
 \alias{generate_bib}
 \title{Generate a list of references included in meta-analyses}
 \usage{
-generate_bib(ma_obj = NULL, bib = NULL, title.bib = NULL,
-  style = "apa", additional_citekeys = NULL, file = NULL,
-  output_dir = getwd(), output_format = c("word", "html", "pdf",
-  "text", "odt", "rmd", "biblatex", "citekeys"), analyses = "all",
-  match = c("all", "any"), case_sensitive = TRUE,
-  save_build_files = FALSE, header = list(), ...)
+generate_bib(
+  ma_obj = NULL,
+  bib = NULL,
+  title.bib = NULL,
+  style = "apa",
+  additional_citekeys = NULL,
+  file = NULL,
+  output_dir = getwd(),
+  output_format = c("word", "html", "pdf", "text", "odt", "rmd", "biblatex", "citekeys"),
+  analyses = "all",
+  match = c("all", "any"),
+  case_sensitive = TRUE,
+  save_build_files = FALSE,
+  header = list(),
+  ...
+)
 }
 \arguments{
 \item{ma_obj}{A psychmeta meta-analysis object with \code{citekeys} supplied.}
@@ -22,7 +32,7 @@ generate_bib(ma_obj = NULL, bib = NULL, title.bib = NULL,
 
 \item{additional_citekeys}{Additional citekeys to include in the reference list.}
 
-\item{file}{The filename or filepath for the output file. If \code{NULL}, function will output directly to the R console (if \code{output_format} is "text", the formatted references in \code{\link[RefManageR]{BibOptions}} "authoryear" style; if "citekeys", the citekeys for included sources; otherwise, code to generate the bibliography in an RMarkdown document).}
+\item{file}{The filename or filepath for the output file. If \code{NULL}, function will output directly to the R console (if \code{output_format} is "text", a tibble with basic citation information; if "citekeys", the citekeys for included sources; otherwise, code to generate the bibliography in an RMarkdown document).}
 
 \item{output_dir}{The filepath for the output file. Defaults to the current working directory.}
 
@@ -41,7 +51,7 @@ generate_bib(ma_obj = NULL, bib = NULL, title.bib = NULL,
 \item{...}{Additional arguments to pass to \code{\link[rmarkdown]{render}}.}
 }
 \value{
-A list containing the RefManageR BibEntry object. Additionally, a reference list formatted in the requested style and output_format is exported (or printed if file is "console").
+A list containing a tibble of bibtex reference data. Additionally, a reference list formatted in the requested style and output_format is exported (or printed if file is "console").
 }
 \description{
 This function generates a list of studies contributing to a meta-analysis
@@ -62,7 +72,8 @@ generate_bib(ma_obj, bib = system.file("templates/sample_bibliography.bib", pack
 }
 }
 \seealso{
-Other output functions: \code{\link{metabulate_rmd_helper}},
-  \code{\link{metabulate}}
+Other output functions: 
+\code{\link{metabulate_rmd_helper}()},
+\code{\link{metabulate}()}
 }
 \concept{output functions}

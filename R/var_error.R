@@ -27,7 +27,7 @@ var_error_r <- function(r, n, correct_bias = TRUE){
      if(length(r) > 1 & length(n) > 1)
           if(length(r) != length(n))
                stop("Lengths of r and n differ")
-     
+
      if(correct_bias) r <- correct_r_bias(r = r, n = n)
      (1 - r^2)^2 / (n - 1)
 }
@@ -87,8 +87,8 @@ var_error_u <- function(u, ni, na = NA, dependent_sds = FALSE){
 #'
 #' @param rel Vector of reliability estimates.
 #' @param n Vector of sample sizes.
-#' @param rel_type Character vector indicating the type(s) of reliabilities being analyzed. See documentation for \code{ma_r} for a full list of acceptable reliability types. 
-#' NOTE: Currently, only alpha has its own dedicated error-variance estimate; the error variance of other reliability types is estimated using the generic definition of reliability as the squared correlation between observed scores and true scores. 
+#' @param rel_type Character vector indicating the type(s) of reliabilities being analyzed. See documentation for \code{ma_r} for a full list of acceptable reliability types.
+#' NOTE: Currently, only alpha has its own dedicated error-variance estimate; the error variance of other reliability types is estimated using the generic definition of reliability as the squared correlation between observed scores and true scores.
 #' @param k_items Optional numeric vector indicating the number of items in each scale for which reliabilities are being analyzed.
 #'
 #' @return A vector of sampling-error variances.
@@ -104,7 +104,7 @@ var_error_u <- function(u, ni, na = NA, dependent_sds = FALSE){
 #'
 #' \deqn{var_{e}=\frac{4r_{XX}(1-r_{XX})^{2}}{n-1}}{var_e = 4 * rxx * (1 - rxx)^2 / (n - 1)}
 #'
-#' For the equation to estimate the variance of coefficient alpha, see Duhachek and Iacobucci (2004). 
+#' For the equation to estimate the variance of coefficient alpha, see Duhachek and Iacobucci (2004).
 #'
 #' @references
 #' Duhachek, A., & Iacobucci, D. (2004).
@@ -115,31 +115,31 @@ var_error_u <- function(u, ni, na = NA, dependent_sds = FALSE){
 #' var_error_rel(rel = .8, n = 100)
 #' var_error_rel(rel = .8, n = 100, rel_type = "alpha", k_items = 10)
 var_error_rel <- function(rel, n, rel_type = "alpha", k_items = NULL){
-     
+
      if(length(rel) == 0 | length(n) == 0){
           out <- NULL
      }else{
           if(is.null(k_items)) k_items <- rep(NA, max(c(length(rel), length(n))))
-          
+
           dat <- suppressWarnings(as.data.frame(list(rel = rel, n = n, k_items = k_items, rel_type = rel_type), stringsAsFactors = FALSE))
           rel <- dat$rel
           n <- dat$n
           k_items <- dat$k_items
           rel_type <- as.character(dat$rel_type)
           out <- rep(NA, nrow(dat))
-          
+
           logic <- !is.na(rel) & !is.na(n)
-          out[logic] <- estimate_rel_dist(mean_q = rel[logic]^.5, 
+          out[logic] <- estimate_rel_dist(mean_q = rel[logic]^.5,
                                           var_q = var_error_r(r = rel[logic]^.5,
-                                                              n = n[logic], 
+                                                              n = n[logic],
                                                               correct_bias = FALSE))[,"var"]
-          
+
           logic <- !is.na(rel) & !is.na(n) & rel_type == "alpha" & !is.na(k_items)
-          out[logic] <- var_error_alpha(alpha = rel[logic], 
+          out[logic] <- var_error_alpha(alpha = rel[logic],
                                         k_items = k_items[logic],
                                         n_cases = n[logic])
      }
-     
+
      out
 }
 
@@ -148,8 +148,8 @@ var_error_rel <- function(rel, n, rel_type = "alpha", k_items = NULL){
 #'
 #' @param q Vector of square roots of reliability estimates.
 #' @param n Vector of sample sizes.
-#' @param rel_type Character vector indicating the type(s) of reliabilities being analyzed. See documentation for \code{ma_r} for a full list of acceptable reliability types. 
-#' NOTE: Currently, only alpha has its own dedicated error-variance estimate; the error variance of other reliability types is estimated using the generic definition of reliability as the squared correlation between observed scores and true scores. 
+#' @param rel_type Character vector indicating the type(s) of reliabilities being analyzed. See documentation for \code{ma_r} for a full list of acceptable reliability types.
+#' NOTE: Currently, only alpha has its own dedicated error-variance estimate; the error variance of other reliability types is estimated using the generic definition of reliability as the squared correlation between observed scores and true scores.
 #' @param k_items Optional numeric vector indicating the number of items in each scale for which reliabilities are being analyzed.
 #'
 #' @return A vector of sampling-error variances.
@@ -164,8 +164,8 @@ var_error_rel <- function(rel, n, rel_type = "alpha", k_items = NULL){
 #' The sampling variance of the square root of a reliability coefficient is:
 #'
 #' \deqn{var_{e}=\frac{(1-q_{X}^{2})^{2}}{n-1}}{var_e = (1 - qx^2)^2 / (n - 1)}
-#' 
-#' For the equation to estimate the variance of coefficient alpha, see Duhachek and Iacobucci (2004). 
+#'
+#' For the equation to estimate the variance of coefficient alpha, see Duhachek and Iacobucci (2004).
 #'
 #' @references
 #' Duhachek, A., & Iacobucci, D. (2004).
@@ -176,29 +176,29 @@ var_error_rel <- function(rel, n, rel_type = "alpha", k_items = NULL){
 #' var_error_q(q = .8, n = 100)
 #' var_error_q(q = .8, n = 100, rel_type = "alpha", k_items = 10)
 var_error_q <- function(q, n, rel_type = "alpha", k_items = NULL){
-     
+
      if(length(q) == 0 | length(n) == 0){
           out <- NULL
      }else{
           if(is.null(k_items)) k_items <- rep(NA, max(c(length(q), length(n))))
-          
+
           dat <- suppressWarnings(as.data.frame(list(q = q, n = n, k_items = k_items, rel_type = rel_type), stringsAsFactors = FALSE))
           q <- dat$q
           n <- dat$n
           k_items <- dat$k_items
           rel_type <- as.character(dat$rel_type)
           out <- rep(NA, nrow(dat))
-          
+
           logic <- !is.na(q) & !is.na(n)
           out[logic] <- var_error_r(r = q[logic], n = n[logic], correct_bias = FALSE)
-          
+
           logic <- !is.na(q) & !is.na(n) & rel_type == "alpha" & !is.na(k_items)
-          out[logic] <- estimate_q_dist(mean_rel = q[logic]^2, 
-                                        var_rel = var_error_alpha(alpha = q[logic]^2, 
+          out[logic] <- estimate_q_dist(mean_rel = q[logic]^2,
+                                        var_rel = var_error_alpha(alpha = q[logic]^2,
                                                                   k_items = k_items[logic],
-                                                                  n_cases = n[logic]))[,"var"]     
+                                                                  n_cases = n[logic]))[,"var"]
      }
-     
+
      out
 }
 
@@ -250,7 +250,7 @@ var_error_d <- function(d, n1, n2 = NA, correct_bias = TRUE){
      n[!is.na(n2)] <- n[!is.na(n2)] + n2[!is.na(n2)]
 
      if(correct_bias) d <- correct_d_bias(d = d, n = n)
-     
+
      var_e <- (4 / n) * (1 + d^2 / 8)
      var_e[!is.na(n2)] <- (n1[!is.na(n2)] + n2[!is.na(n2)]) / (n1[!is.na(n2)] * n2[!is.na(n2)]) +
           d[!is.na(n2)]^2 / (2 * (n1[!is.na(n2)] + n2[!is.na(n2)]))
@@ -300,35 +300,46 @@ var_error_delta <- function(delta, nc, ne = NA, use_pooled_sd = FALSE, correct_b
 }
 
 
-#' Estimate the error variance Hedge's g values
+#' Estimate the error variance Hedges's g values
 #'
 #' Allows for error variance to be estimated using total sample size of both groups being compared (in this case, supply sample sizes using only the n1 argument) or
 #' using separate sample sizes for group 1 and group 2 (i.e., the groups being compared; in this case, supply sample sizes using both the n1 and n2 arguments).
 #'
-#' @param g Vector of Hedge's g values.
+#' @param g Vector of Hedges's g values.
 #' @param n1 Vector of sample sizes from group 1 (or the total sample size with the assumption that groups are of equal size, if no group 2 sample size is supplied).
 #' @param n2 Vector of sample sizes from group 2.
+#' @param a_method Method used to correct the bias in Cohen's d to convert to Hedges's g. Options are "gamma" (default) for the exact method based on the gamma function (Hedges & Olkin, 1985) or "approx" for the computationally trivial approximation (Borenstein et al., 2006).
 #'
 #' @return A vector of sampling-error variances.
 #' @export
 #'
 #' @references
+#' Hedges, L. V., & Olkin, I. (1985).
+#' \emph{Statistical methods for meta-analysis}.
+#' Academic Press. p. 104
+#'
 #' Borenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009).
 #' \emph{Introduction to meta-analysis}.
-#' Chichester, UK: Wiley. Chapter 4.
+#' Wiley. p. 27.
 #'
 #' @examples
 #' var_error_g(g = 1, n1 = 30, n2 = 30)
 #' var_error_g(g = 1, n1 = 60, n2 = NA)
-var_error_g <- function(g, n1, n2 = NA){
+var_error_g <- function(g, n1, n2 = NA, a_method = c("gamma", "approx")) {
+     a_method <- match.arg(a_method)
      if(is.data.frame(g)) g <- as.matrix(g)
      if(is.data.frame(n1)) n1 <- as.matrix(n1)
      if(is.data.frame(n2)) n2 <- as.matrix(n2)
 
      n <- n1
      n[!is.na(n2)] <- n[!is.na(n2)] + n2[!is.na(n2)]
+     df <- n - 2
 
-     J <- (1 - 3 / (4 * (n - 2 - 1)))
+     if (a_method == "gamma") {
+          J <- exp(lgamma(df/2) - log(sqrt(df/2)) - lgamma((df - 1)/2))
+     } else {
+          J <- 1 - 3 / (4 * df - 1)
+     }
      d <- g / J
 
      if(length(d) == 1 & length(n1) > 1) {
@@ -462,4 +473,72 @@ var_error_auc <- function(A, n1, n2 = NA){
 #' @export
 var_error_cles <- function(A, n1, n2 = NA){
      var_error_A(A, n1, n2)
+}
+
+#' Estimate the error variance of multiple correlations and squared multiple correlations for linear regressions
+#'
+#' @param R Vector of multiple correlation coefficients.
+#' @param Rsq Vector of squared multiple correlation coefficients.
+#' @param n Vector of sample sizes.
+#' @param p Vector of numbers of predictors in the model.
+#'
+#' @return A vector of sampling-error variances.
+#' @export
+#'
+#' @references
+#' Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003).
+#' \emph{Applied multiple regression/correlation analysis for the behavioral sciences} (3rd ed.).
+#' Mahwah, NJ: Erlbaum. \url{https://doi.org/10/crtf}. p. 88.
+#'
+#' Olkin, I., & Finn, J. D. (1995). Correlations redux.
+#' \emph{Psychological Bulletin, 118}(1), 155–164. https://doi.org/10/bt48vd
+#'
+#' @details
+#' The sampling variance of a multiple correlation is approximately:
+#'
+#' \deqn{var_{e}=\frac{(1-R^{2})^{2}(n-p-1)^{2}}{(n^{2}-1)(n+3)}}{var_e = (1 - R^2)^2 \* (n - p - 1)^2 / ((n^2 - 1) \* (n + 3))}
+#'
+#' The sampling variance of a squared multiple correlation is approximately:
+#'
+#' \deqn{var_{e}=\frac{4R^{2}(1-R^{2})^{2}(n-p-1)^{2}}{(n^{2}-1)(n+3)}}{var_e = 4 \* R^2 \* (1 - R^2)^2 \* (n - p - 1)^2 / ((n^2 - 1) \* (n + 3))}
+#'
+#' @examples
+#' var_error_mult_R(R = .5, n = 30, p = 4)
+#' var_error_mult_R(R = .5, n = 30, p = 4)
+#' var_error_mult_Rsq(Rsq = .25, n = 30, p = 4)
+#' var_error_mult_Rsq(Rsq = .25, n = 30, p = 4)
+var_error_mult_R <- function(R, n, p){
+        if(length(R) > 1 & length(n) > 1)
+                if(length(R) != length(n))
+                        stop("Lengths of R and n differ")
+        if(length(R) > 1 & length(p) > 1)
+                if(length(R) != length(p))
+                        stop("Lengths of R and p differ")
+        var_e <- (1 - R^2)^2 * (n - p - 1)^2 / ((n^2 - 1) * (n + 3))
+        var_e
+}
+
+#' @rdname var_error_mult_R
+#' @export
+var_error_mult_Rsq <- function(Rsq, n, p){
+        if(length(Rsq) > 1 & length(n) > 1)
+                if(length(Rsq) != length(n))
+                        stop("Lengths of Rsq and n differ")
+        if(length(Rsq) > 1 & length(p) > 1)
+                if(length(Rsq) != length(p))
+                        stop("Lengths of Rsq and p differ")
+        var_e <- 4 * Rsq * (1 - Rsq)^2 * (n - p - 1)^2 / ((n^2 - 1) * (n + 3))
+        var_e
+}
+
+#' @rdname var_error_mult_R
+#' @export
+var_error_R <- function(R, n, p){
+        var_error_mult_R(R, n, p)
+}
+
+#' @rdname var_error_mult_R
+#' @export
+var_error_Rsq <- function(Rsq, n, p){
+        var_error_mult_Rsq(Rsq, n, p)
 }

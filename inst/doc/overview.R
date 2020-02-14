@@ -1,22 +1,22 @@
-## ----setup, include=FALSE------------------------------------------------
+## ----setup, include=FALSE-------------------------------------------------------------------------------------------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE)
 library(psychmeta)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  install.packages("psychmeta")
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  devtools::install_github("psychmeta/psychmeta")
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  library(psychmeta)
 
-## ---- echo=FALSE---------------------------------------------------------
+## ---- echo=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 # First 10 observations from the the database of Gonzalez-Mulé, Mount, and Oh (2014; JAP)
 head(data_r_gonzalezmule_2014[,c("Study", "n", "rxyi", "Rating source",
                                 "rxxi", "ryyi", "ux")])
 
-## ---- include=FALSE------------------------------------------------------
+## ---- include=FALSE-------------------------------------------------------------------------------------------------------------------------------------------
 dat_matrix <- data.frame(var_names = c("X", "Y", "Z"),
                          n = c(100, 100, 100),
                          mean = c(4, 5, 3),
@@ -26,10 +26,10 @@ dat_matrix <- data.frame(var_names = c("X", "Y", "Z"),
                                          var_names = c("X", "Y", "Z")))
 rownames(dat_matrix) <- NULL
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 dat_matrix
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 reshape_mat2dat(
      var_names = var_names,                # Column of variable names
      cor_data = c("X", "Y", "X"),          # Names of correlation columns
@@ -37,7 +37,7 @@ reshape_mat2dat(
      unique_data = c("mean", "sd", "rel"), # Names of columns unique to relationships
      data = dat_matrix)
 
-## ---- include=FALSE------------------------------------------------------
+## ---- include=FALSE-------------------------------------------------------------------------------------------------------------------------------------------
 dat_wide <- data.frame(sample_id = c(1, 2, 3),
                        ni = c(66, 74, 93),
                        rxyi_X_Y = c(-.29, -.16, -.34),
@@ -47,10 +47,10 @@ dat_wide <- data.frame(sample_id = c(1, 2, 3),
                        rel_Y   = c(.85, .86, .82),
                        rel_Z   = c(.91, .90, .89))
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 dat_wide
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 common_vars <- c("sample_id")           # Column names for variables common to all
                                         # relationships
 var_names <- c("X", "Y", "Z")
@@ -75,7 +75,7 @@ reshape_wide2long(common_vars = common_vars,
                   es_name = "rxyi",              # Type of effect size in dat_wide
                   data = dat_wide)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  convert_es(es = 1,    input_es = "d",       output_es = "r", n1 = 50,  n2 = 50)
 #  convert_es(es = -1.3, input_es = "t",       output_es = "r", n1 = 100, n2 = 140)
 #  convert_es(es = 10.3, input_es = "F",       output_es = "r", n1 = 100, n2 = 150)
@@ -92,22 +92,22 @@ reshape_wide2long(common_vars = common_vars,
 #  convert_es(es = 4.37, input_es = "or",      output_es = "d", n1 = 100, n2 = 100)
 #  convert_es(es = 1.47, input_es = "lor",     output_es = "d", n1 = 100, n2 = 100)
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 convert_es(es = c(.4, .3, .25),
            input_es = "r", output_es = "d",
            n1 = c(50, 110, 65), n2 = c(50, 70, 65)
            )$meta_input
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  convert_es(es = .3, input_es = "r", output_es = "r", n1 = 100)
 #  convert_es(es = .8, input_es = "d", output_es = "d", n1 = 64, n2 = 36)
 #  convert_es(es = .8, input_es = "A", output_es = "A", n1 = 64, n2 = 36)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  correct_r_dich(r = c(.3, .5), px = .5, py = .5, n = 100)
 #  correct_r_split(r = c(.3, .5), pi = .2, n = 100)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(
 #  #### Commonly used arguments: ####
 #  # Which data set would you like to use?
@@ -184,7 +184,7 @@ convert_es(es = c(.4, .3, .25),
 #       control =  control_psychmeta()
 #  )
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  control_psychmeta(
 #       # Should the mean or the sample-specific effect sizes be used to estimate error variance?
 #       error_type = c("mean", "sample"),
@@ -250,42 +250,42 @@ convert_es(es = c(.4, .3, .25),
 #       hs_override = FALSE
 #  )
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = data_r_meas_multi$rxyi,
 #       n = data_r_meas_multi$n)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = "rxyi", n = "n",
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n,
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n,
 #       moderators = moderator,
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n,
 #       moderators = c("Rating source", "Published", "Complexity"),
 #       data = data_r_gonzalezmule_2014)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n,
 #       construct_x = x_name,
 #       construct_y = y_name,
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n,
 #       construct_x = x_name,
 #       construct_y = y_name,
 #       moderators = moderator,
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj <- ma_r(ma_method = "ic",
 #                 rxyi = rxyi, n = n,
 #                 construct_x = x_name,
@@ -297,7 +297,7 @@ convert_es(es = c(.4, .3, .25),
 #                 impute_artifacts = FALSE,
 #                 data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(ma_method = "ad",
 #       rxyi = rxyi, n = n,
 #       construct_x = x_name,
@@ -309,10 +309,10 @@ convert_es(es = c(.4, .3, .25),
 #       moderators = moderator,
 #       data = data_r_meas_multi)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r_ad(ma_obj, correct_rr_x = FALSE, correct_rr_y = FALSE)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(rxyi = rxyi, n = n, sample_id = sample_id,
 #       collapse_method = "composite",
 #       data = data_r_meas_multi)
@@ -321,7 +321,7 @@ convert_es(es = c(.4, .3, .25),
 #       collapse_method = "average",
 #       data = data_r_meas_multi)
 
-## ---- eval=TRUE, echo=TRUE-----------------------------------------------
+## ---- eval=TRUE, echo=TRUE------------------------------------------------------------------------------------------------------------------------------------
 (gonzalezmule <- ma_r(ma_method = "ic", rxyi = rxyi, n = n,
                      construct_x = "GMA",
                      construct_y = "OCB",
@@ -331,17 +331,17 @@ convert_es(es = c(.4, .3, .25),
                      control = control_psychmeta(hs_override = TRUE),
                      data = data_r_gonzalezmule_2014))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  summary(gonzalezmule)
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 metatab_list <- get_metatab(gonzalezmule)
 metatab_list$individual_correction$true_score
 
-## ---- eval=TRUE----------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj <- sensitivity(ma_obj,
 #                        leave1out = TRUE,
 #                        bootstrap = TRUE,
@@ -353,7 +353,7 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #                        boot_conf_level = 0.95,
 #                        boot_ci_type = "norm")
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj_gm <- ma_r(ma_method = "ic",
 #                    rxyi = rxyi, n = n,
 #                    rxx = rxxi,
@@ -373,7 +373,7 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  ma_obj_mc <- metareg(ma_obj_mc, formula_list = list("Parent*Age" = yi ~ Parent*Age))
 #  get_metareg(ma_obj_mc)[[1]]$individual_correction$true_score
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj_gm <- ma_r(ma_method = "ic",
 #                    rxyi = rxyi, n = n,
 #                    rxx = rxxi,
@@ -384,10 +384,10 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  
 #  ma_obj_gm
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj <- heterogeneity(ma_obj)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj <- ma_r(ma_method = "ic", sample_id = sample_id,
 #                 rxyi = rxyi, n = n,
 #                 construct_x = x_name,
@@ -401,11 +401,11 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  
 #  ma_obj
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  filter_ma(ma_obj, analyses = list(construct = "Y") )
 #  filter_ma(ma_obj, analyses = list(construct_pair = list(c("X", "Z"))) )
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Heterogeneity statistics
 #  ma_obj <- heterogeneity(ma_obj)
 #  out_heterogeneity <- get_heterogeneity(ma_obj)
@@ -427,12 +427,12 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  # A summary of artifact distributions
 #  get_ad(ma_obj, ma_method = "ic")
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Write meta-analysis tables to a Word file called "Meta-analysis table.docx"
 #  metabulate(ma_obj, file = "Meta-analysis table.docx",
 #             output_format = "word", output_dir = tempdir())
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Create funnel and forest plots
 #  ma_obj <- plot_funnel(ma_obj = ma_obj)
 #  ma_obj <- plot_forest(ma_obj = ma_obj, ma_facetname = "MA")
@@ -446,7 +446,7 @@ gonzalezmule$meta_tables$`analysis_id: 1`$individual_correction$true_score
 #  out_plots$leave1out$`analysis id: 1`$barebones$plots
 #  out_plots$cumulative$`analysis id: 1`$barebones$plots
 
-## ---- eval=TRUE, echo=FALSE, results = "hide", fig.keep="high"-----------
+## ---- eval=TRUE, echo=FALSE, results = "hide", fig.keep="high"------------------------------------------------------------------------------------------------
 ma_obj_print <- ma_r(ma_method = "ic", sample_id = sample_id,
                      rxyi = rxyi, n = n,
                      construct_x = x_name,
@@ -460,7 +460,7 @@ ma_obj_print <- ma_r(ma_method = "ic", sample_id = sample_id,
 ma_obj_print <- plot_funnel(ma_obj = ma_obj_print)
 ma_obj_print$funnel$`analysis id: 1`$barebones
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_obj <- ma_r(ma_method = "ic",
 #                 rxyi = rxyi, n = n,
 #                 construct_x = x_name,
@@ -491,7 +491,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #               file = "sources.docx"
 #               )
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  generate_bib(ma_obj,
 #  
 #               bib = system.file("templates/sample_bibliography.bib",
@@ -501,7 +501,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  
 #               )
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Create artifact-distribution objects for X, Y, and Z.
 #  ad_x <- create_ad(mean_qxi = 0.8927818, var_qxi = 0.0008095520, k_qxi = 40,
 #                    mean_n_qxi = 11927 / 40, qxi_dist_type = "alpha")
@@ -518,7 +518,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  ma_r_ad(ma_obj = ma_bb_xy, ad_obj_x = ad_x, ad_obj_y = ad_y,
 #          correct_rr_x = FALSE, correct_rr_y = FALSE)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(ma_method = "ad", rxyi = rxyi, n = n,
 #       correct_rr_x = FALSE, correct_rr_y = FALSE,
 #       construct_x = x_name, construct_y = y_name, sample_id = sample_id,
@@ -530,7 +530,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                 Y = ad_y,
 #                 Z = ad_z))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ma_r(ma_method = "ad", rxyi = rxyi, n = n,
 #       correct_rr_x = FALSE, correct_rr_y = FALSE,
 #       construct_x = x_name, construct_y = y_name, sample_id = sample_id,
@@ -547,7 +547,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                          mean_n_qxi = 11927 / 40, qxi_dist_type = "alpha")))
 #  
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  ad_list <- create_ad_list(n = n, rxx = rxxi, ryy = ryyi,
 #                            construct_x = x_name, construct_y = y_name,
 #                            sample_id = sample_id,
@@ -561,7 +561,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #       # The "supplemental_ads" argument can take the output of create_ad_list().
 #       supplemental_ads = ad_list)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # For purposes of illustration, delete all reliability values not associated with "Z":
 #  dat_zarts <- data_r_meas_multi
 #  dat_zarts[,"rxxi"] <- dat_zarts[dat_zarts$y_name != "Z","ryyi"] <- NA
@@ -579,20 +579,20 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                 Y = list(mean_qxi = 0.8941266, var_qxi = 0.0009367234, k_qxi = 40,
 #                          mean_n_qxi = 11927 / 40, qxi_dist_type = "alpha")))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  sim_dat <- simulate_psych(n = 1000,
 #                            rho_mat = reshape_vec2mat(.5),
 #                            sigma_vec = c(1, 1),
 #                            sr_vec = c(1, .5),
 #                            rel_vec = c(.8, .8), var_names = c("Y", "X"))
 
-## ---- eval=FALSE, echo=FALSE---------------------------------------------
+## ---- eval=FALSE, echo=FALSE----------------------------------------------------------------------------------------------------------------------------------
 #  sim_dat
 #  cor(sim_dat$observed[,1:2])
 #  cor(sim_dat$true[,1:2])
 #  cor(sim_dat$error[,1:2])
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  simulate_r_sample(n = 1000,
 #                    # Correlation parameter matrix
 #                    rho_mat = reshape_vec2mat(.5, order = 5),
@@ -617,7 +617,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                                   c(1, .3, 0, 0, 0)),
 #                    sr_composites = c(.7, .5))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Note the varying methods for defining parameters:
 #  simulate_r_database(k = 10,
 #  
@@ -655,7 +655,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                      # Variable names
 #                      var_names = c("X", "Y", "Z"))
 
-## ----simulate_d_sample stats, eval=FALSE---------------------------------
+## ----simulate_d_sample stats, eval=FALSE----------------------------------------------------------------------------------------------------------------------
 #  ## Simulate statistics by providing integers as "n_vec":
 #  simulate_d_sample(n_vec = c(200, 100),
 #  
@@ -684,7 +684,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                    # Group names
 #                    group_names = c("A", "B"))
 
-## ----simulate_d_sample params, eval=FALSE--------------------------------
+## ----simulate_d_sample params, eval=FALSE---------------------------------------------------------------------------------------------------------------------
 #  simulate_d_sample(n_vec = c(2/3, 1/3),
 #                    rho_mat_list = list(reshape_vec2mat(.5),
 #                                        reshape_vec2mat(.4)),
@@ -698,7 +698,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                    k_items_vec = c(5, 10),
 #                    group_names = c("A", "B"))
 
-## ----simulate_d_database, eval=FALSE-------------------------------------
+## ----simulate_d_database, eval=FALSE--------------------------------------------------------------------------------------------------------------------------
 #  simulate_d_database(k = 5,
 #                      # "Group1" and "Group2" labels are not required for parameter arguments:
 #                      # They are shown only for enhanced interpretability.
@@ -728,7 +728,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                      # Variable names
 #                      var_names = c("Y", "Z"))
 
-## ----correct mvrr, eval=FALSE--------------------------------------------
+## ----correct mvrr, eval=FALSE---------------------------------------------------------------------------------------------------------------------------------
 #  # Create example matrices with different variances and covariances:
 #  Sigma_i <- reshape_vec2mat(cov = .2, var = .8, order = 4)
 #  Sigma_xx_a <- reshape_vec2mat(cov = .5, order = 2)
@@ -744,12 +744,12 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #                     means_x_a = c(1, 1),
 #                     x_col = 1:2)
 
-## ----spearman-brown, eval=FALSE------------------------------------------
+## ----spearman-brown, eval=FALSE-------------------------------------------------------------------------------------------------------------------------------
 #  estimate_rel_sb(rel_initial = .5, k = 4)
 #  
 #  estimate_length_sb(rel_initial = .5, rel_desired = .8)
 
-## ----single composite r, eval=FALSE--------------------------------------
+## ----single composite r, eval=FALSE---------------------------------------------------------------------------------------------------------------------------
 #  # Correlation between a variable and a composite
 #  composite_r_matrix(r_mat = reshape_vec2mat(.4, order = 5), x_col = 2:5, y_col = 1)
 #  
@@ -762,7 +762,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  composite_r_scalar(mean_rxy = .3,
 #                     k_vars_x = 3, mean_intercor_x = .3, k_vars_y = 2, mean_intercor_y = .3)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  composite_d_matrix(d_vec = c(1, 1),
 #                     r_mat = reshape_vec2mat(.7),
 #                     wt_vec = c(1, 1),
@@ -770,12 +770,12 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  
 #  composite_d_scalar(mean_d = 1, mean_intercor = .7, k_vars = 2, p = .5)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  composite_rel_matrix(rel_vec = c(.8, .8), r_mat = reshape_vec2mat(.4), sd_vec = c(1, 1))
 #  
 #  composite_rel_scalar(mean_rel = .8, mean_intercor = .4, k_vars = 2)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # For purposes of demonstration, generate a dataset from the following matrix:
 #  S <- reshape_vec2mat(cov = c(.3 * 2 * 3,
 #                               .4 * 2 * 4,
@@ -785,7 +785,7 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  mean_vec <- setNames(c(1, 2, 3), colnames(S))
 #  dat <- data.frame(MASS::mvrnorm(n = 100, mu = mean_vec, Sigma = S, empirical = TRUE))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  # Compute regression models using one predictor:
 #  lm_out1 <- lm(formula = Y ~ X, data = dat)
 #  lm_mat_out1 <- lm_mat(formula = Y ~ X, cov_mat = S, mean_vec = mean_vec, n = nrow(dat))
@@ -794,24 +794,24 @@ ma_obj_print$funnel$`analysis id: 1`$barebones
 #  lm_out2 <- lm(formula = Y ~ X + Z, data = dat)
 #  lm_mat_out2 <- lm_mat(formula = Y ~ X + Z, cov_mat = S, mean_vec = mean_vec, n = nrow(dat))
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  summary(lm_out1)
 #  summary(lm_mat_out1)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  anova(lm_out1, lm_out2)
 #  anova(lm_mat_out1, lm_mat_out2)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  mat_array <- get_matrix(ma_obj = ma_obj)
 #  R <- mat_array$individual_correction$`moderator_comb: 1`$true_score$mean_rho
 #  n <- mat_array$individual_correction$`moderator_comb: 1`$true_score$N[1,3]
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  lm_x <- lm_mat(formula = Y ~ X, cov_mat = R, n = n)
 #  lm_xz <- lm_mat(formula = Y ~ X + Z, cov_mat = R, n = n)
 
-## ---- eval=FALSE---------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------------------------------------------------------------------------------------------------
 #  summary(lm_x)
 #  summary(lm_xz)
 #  anova(lm_x, lm_xz)
