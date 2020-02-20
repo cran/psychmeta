@@ -1709,7 +1709,7 @@ summary {
 <p>This matrix-style format can be easily converted to the long-format data <strong><code>psychmeta</code></strong> requires with the <code>reshape_mat2dat()</code> function:</p>
 <pre class="r"><code>reshape_mat2dat(
      var_names = var_names,                # Column of variable names
-     cor_data = c(&quot;X&quot;, &quot;Y&quot;, &quot;X&quot;),          # Names of correlation columns
+     cor_data = c(&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;),          # Names of correlation columns
      common_data = n,                      # Names of columns shared among relationships
      unique_data = c(&quot;mean&quot;, &quot;sd&quot;, &quot;rel&quot;), # Names of columns unique to relationships
      data = dat_matrix)</code></pre>

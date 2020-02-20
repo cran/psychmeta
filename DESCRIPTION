@@ -1,8 +1,8 @@
 Package: psychmeta
 Type: Package
 Title: Psychometric Meta-Analysis Toolkit
-Version: 2.3.5
-Date: 2020-02-13
+Version: 2.3.6
+Date: 2020-02-19
 Authors@R: c(person("Jeffrey A.", "Dahlke", role = c("aut", "cre"),
                      email = "jdahlke@humrro.org"),
               person("Brenton M.", "Wiernik", role = "aut", email = "brenton@psychmeta.com"),
@@ -24,7 +24,7 @@ Imports: dplyr, stats, methods, MASS, boot, tmvtnorm, tibble, reshape2,
 Suggests: bib2df, rmarkdown, knitr
 RoxygenNote: 7.0.2
 NeedsCompilation: no
-Packaged: 2020-02-14 01:00:24 UTC; jeffreydahlke
+Packaged: 2020-02-20 01:50:58 UTC; jeffreydahlke
 Author: Jeffrey A. Dahlke [aut, cre],
   Brenton M. Wiernik [aut],
   Michael T. Brannick [ctb] (Testing),
@@ -34,4 +34,4 @@ Author: Jeffrey A. Dahlke [aut, cre],
   Yuejia (Mandy) Teng [ctb] (Testing)
 Maintainer: Jeffrey A. Dahlke <jdahlke@humrro.org>
 Repository: CRAN
-Date/Publication: 2020-02-14 06:50:02 UTC
+Date/Publication: 2020-02-20 09:20:02 UTC
