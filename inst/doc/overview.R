@@ -31,9 +31,9 @@ dat_matrix
 
 ## ---- eval=TRUE-----------------------------------------------------------------------------------------------------------------------------------------------
 reshape_mat2dat(
-     var_names = var_names,                # Column of variable names
+     var_names = "var_names",              # Column of variable names
      cor_data = c("X", "Y", "Z"),          # Names of correlation columns
-     common_data = n,                      # Names of columns shared among relationships
+     common_data = "n",                    # Names of columns shared among relationships
      unique_data = c("mean", "sd", "rel"), # Names of columns unique to relationships
      data = dat_matrix)
 
