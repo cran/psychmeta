@@ -1,6 +1,6 @@
-47269f7f6f3a40102f4e0fee48eca99a *DESCRIPTION
+ae3b8fa91a4a657dcb34ae5b03966893 *DESCRIPTION
 f6e77b18efd08fcfcf3ce698ab597729 *NAMESPACE
-c0f96603fd4765092df6273666323fef *NEWS
+dead28ab66ea661bd11563d3a4d7ee89 *NEWS
 71098888a3133aed647a8ad578275635 *R/adjust_n.R
 bac6345aa764ae65660ff18897780fe9 *R/composites.R
 5a0f00ddb15b056388260f97075b1e2e *R/compute_dmod.R
@@ -34,13 +34,13 @@ ccc11dd89599a90022cbd688244feef4 *R/heterogeneity.R
 cc1a49d4c7c898142a37a835e713153e *R/intervals.R
 e47cf6438da67e6d2e2d2f8a2584a435 *R/itemize_scales.R
 f96dfa51a867cbff0f7feddc9391f2b1 *R/lm_mat.R
-4e81a136dc8235c65e8067113a7aea8c *R/ma_d.R
+d1231f2df24319a2c3a8f577dab06a9d *R/ma_d.R
 bbd8e265cf79f234e3051dbf7dab7276 *R/ma_d_ad.R
 1e9c14264ac0d9c783950a5dca6f6a7b *R/ma_d_bb.R
 ea20f3e72e2eea1f333befee7ccd4953 *R/ma_d_ic.R
 79f5156ffedd08d6c4ae48ebc9b68a8b *R/ma_d_order2.R
 47b02b93096f798143e8fe3f257db68b *R/ma_generic.R
-a1c8c2a8f0c186980f0846c02e9a2d19 *R/ma_r.R
+d5e0eb5f008ecf23a1e0f95f4072f70c *R/ma_r.R
 abddab08dbe7d03d9845e91554c3f82f *R/ma_r_ad.R
 3b732636cd1e93fa5150040c6b450d1f *R/ma_r_ad_bvdrr.R
 cd78be68238c9bde95d3f567bb43b08b *R/ma_r_ad_bvirr.R
@@ -84,7 +84,7 @@ f968aec3ae6cc5214bb25d02f150b993 *R/simulate_d_legacy.R
 8725db9c92ec2256c406c5048542016f *R/var_error.R
 918b5c985f3017c7dc01eb9143591261 *R/var_error_tsa.R
 3f0c185c2bbd7039e332d576c40e9584 *R/wrangle_ads.R
-3eaf8e85a764649386a75f67855d8fc3 *R/wrangle_data.R
+05c9db1e68edd79c13f9ca9b683e1c42 *R/wrangle_data.R
 6ed31a378b94ce086e63924e72db4254 *R/wt_stat.R
 0b75a2c5d8ac81e97d6905fb9d6fae3f *R/zzz.R
 a6a28ac3f0f0f6919834d4d6cfc4e894 *README.md
@@ -105,7 +105,7 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
 15d8d93f5bb42a298d77700ab47d8996 *inst/doc/barebones_correlation.R
 ae9b5b221d4107b2089c3fa639ae5fcb *inst/doc/barebones_correlation.Rmd
-dd5ff2e17672f7a4ee135e5bb2b29776 *inst/doc/barebones_correlation.html
+2d47250e1d104cbf87d609d34f7c4254 *inst/doc/barebones_correlation.html
 f954e6712ee8e9d34e9212fa4e01e1a5 *inst/doc/overview.R
 a83eabba1bfb9bdda78cf495a817ec0d *inst/doc/overview.Rmd
 615c87c700629f961674a1c20c7c943e *inst/doc/overview.html
