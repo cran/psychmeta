@@ -12,7 +12,7 @@
 
 <meta name="author" content="Brenton Wiernik" />
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-06-04" />
 
 <title>Barebones Meta-Analysis of Correlations</title>
 
@@ -315,7 +315,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Barebones Meta-Analysis of Correlations</h1>
 <h4 class="author">Brenton Wiernik</h4>
-<h4 class="date">2020-04-21</h4>
+<h4 class="date">2020-06-04</h4>
 
 
 
@@ -543,23 +543,21 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">summary</span>(ma_res)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt; Bare-bones meta-analysis results </span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; ---------------------------------------------------------------------- </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; # A tibble: 9 x 16</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y analysis_type    moderator      k     N mean_r   sd_r   se_r sd_res CI_LL_95 CI_UL_95 CR_LL_80 CR_UL_80</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;         &lt;int&gt;   &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;       &lt;fct&gt;            &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 1           1       1 X           Y           Overall          All Levels    40 11927  0.317 0.125  0.0198 0.113     0.277    0.357    0.169    0.465</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 2           2       1 X           Y           Simple Moderator 1             20  5623  0.397 0.0886 0.0198 0.0729    0.356    0.439    0.300    0.494</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 3           3       1 X           Y           Simple Moderator 2             20  6304  0.245 0.109  0.0243 0.0948    0.194    0.296    0.119    0.371</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; 4           4       2 X           Z           Overall          All Levels    40 11927  0.324 0.129  0.0204 0.118     0.282    0.365    0.170    0.477</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; 5           5       2 X           Z           Simple Moderator 1             20  5623  0.422 0.0922 0.0206 0.0780    0.379    0.465    0.319    0.526</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; 6           6       2 X           Z           Simple Moderator 2             20  6304  0.236 0.0861 0.0193 0.0677    0.195    0.276    0.146    0.326</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 7           7       3 Y           Z           Overall          All Levels    40 11927  0.311 0.137  0.0217 0.126     0.268    0.355    0.146    0.476</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; 8           8       3 Y           Z           Simple Moderator 1             20  5623  0.405 0.110  0.0246 0.0979    0.354    0.457    0.275    0.535</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; 9           9       3 Y           Z           Simple Moderator 2             20  6304  0.228 0.0997 0.0223 0.0841    0.181    0.274    0.116    0.339</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; </span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; </span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; Information available in the meta-analysis object includes:</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt;  - meta_tables   [ access using get_metatab() ]</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt;  - escalc        [ access using get_escalc() ]</span></span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y    analysis_type  moderator  k     N mean_r   sd_r   se_r sd_res CI_LL_95 CI_UL_95 CR_LL_80 CR_UL_80</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 1           1       1           X           Y          Overall All Levels 40 11927  0.317 0.1249 0.0198 0.1135    0.277    0.357    0.169    0.465</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; 2           2       1           X           Y Simple Moderator          1 20  5623  0.397 0.0886 0.0198 0.0729    0.356    0.439    0.300    0.494</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 3           3       1           X           Y Simple Moderator          2 20  6304  0.245 0.1086 0.0243 0.0948    0.194    0.296    0.119    0.371</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 4           4       2           X           Z          Overall All Levels 40 11927  0.324 0.1288 0.0204 0.1179    0.282    0.365    0.170    0.477</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 5           5       2           X           Z Simple Moderator          1 20  5623  0.422 0.0922 0.0206 0.0780    0.379    0.465    0.319    0.526</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; 6           6       2           X           Z Simple Moderator          2 20  6304  0.236 0.0861 0.0193 0.0677    0.195    0.276    0.146    0.326</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; 7           7       3           Y           Z          Overall All Levels 40 11927  0.311 0.1369 0.0217 0.1265    0.268    0.355    0.146    0.476</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; 8           8       3           Y           Z Simple Moderator          1 20  5623  0.405 0.1100 0.0246 0.0979    0.354    0.457    0.275    0.535</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 9           9       3           Y           Z Simple Moderator          2 20  6304  0.228 0.0997 0.0223 0.0841    0.181    0.274    0.116    0.339</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; </span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; </span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; Information available in the meta-analysis object includes:</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt;  - meta_tables   [ access using get_metatab() ]</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt;  - escalc        [ access using get_escalc() ]</span></span></code></pre></div>
 <p>In this table,</p>
 <ul>
 <li><strong><code>analysis_id</code></strong>, <strong><code>pair_id</code></strong>, <strong><code>construct_x</code></strong>, <strong><code>construct_y</code></strong>, and the moderator columns are defined as above.</li>
@@ -623,12 +621,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; Using compatibility `.name_repair`.</span></span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
 <span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; # A tibble: 3 x 14</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator `F value` df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;     &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;       &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; 1       1 X           Y           moderator      23.6      1     36.5 1       2        0.397  0.245 0.152   0.0887    0.216</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt; 2       2 X           Z           moderator      43.6      1     37.8 1       2        0.422  0.236 0.186   0.129     0.243</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt; 3       3 Y           Z           moderator      28.7      1     37.6 1       2        0.405  0.228 0.178   0.111     0.245</span></span></code></pre></div>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator F value df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
 </div>
 </div>
 <div id="outputting-results" class="section level2">
