@@ -1,11 +1,12 @@
 Package: psychmeta
 Type: Package
 Title: Psychometric Meta-Analysis Toolkit
-Version: 2.3.10
-Date: 2020-06-07
+Version: 2.4.0
+Date: 2020-07-11
 Authors@R: c(person("Jeffrey A.", "Dahlke", role = c("aut", "cre"),
                      email = "jdahlke@humrro.org"),
               person("Brenton M.", "Wiernik", role = "aut", email = "brenton@psychmeta.com"),
+              person("Wesley", "Gardiner", role = "ctb", comment = "Unit tests"),
               person("Michael T.", "Brannick", role = "ctb", comment = "Testing"),
               person("Jack", "Kostal", role = "ctb", comment = "Code for reshape_mat2dat function"),
               person("Sean", "Potter", role = "ctb", comment = "Testing; Code for cumulative and leave1out plots"),
@@ -21,13 +22,14 @@ VignetteBuilder: knitr
 Imports: dplyr, stats, boot, tibble, reshape2, ggplot2, metafor,
         progress, tidyr (>= 1.0.0), stringi, stringr, rlang, curl,
         purrr, data.table
-Suggests: MASS, tmvtnorm, nor1mix, bib2df, cli, crayon, rmarkdown,
-        knitr
+Suggests: MASS, mvtnorm, nor1mix, bib2df, cli, crayon, rmarkdown,
+        knitr, testthat (>= 2.1.0)
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2020-06-07 17:27:36 UTC; jeffreydahlke
+Packaged: 2020-07-11 23:54:57 UTC; jeffreydahlke
 Author: Jeffrey A. Dahlke [aut, cre],
   Brenton M. Wiernik [aut],
+  Wesley Gardiner [ctb] (Unit tests),
   Michael T. Brannick [ctb] (Testing),
   Jack Kostal [ctb] (Code for reshape_mat2dat function),
   Sean Potter [ctb] (Testing; Code for cumulative and leave1out plots),
@@ -35,4 +37,4 @@ Author: Jeffrey A. Dahlke [aut, cre],
   Yuejia (Mandy) Teng [ctb] (Testing)
 Maintainer: Jeffrey A. Dahlke <jdahlke@humrro.org>
 Repository: CRAN
-Date/Publication: 2020-06-07 22:50:03 UTC
+Date/Publication: 2020-07-12 04:50:02 UTC
