@@ -1,6 +1,6 @@
-e9d1217c480b629ed2082cf80f18ec84 *DESCRIPTION
+1019a016ad866edc17c1e5aeda289be9 *DESCRIPTION
 3492e422dd623deb2fc53463150f3e98 *NAMESPACE
-8592cee9b5c905656d22a01a3d4347c2 *NEWS
+f2385ec98b3f4eda64a489c70b716bb0 *NEWS
 577790b2390746176a1dd25a6a853cf2 *R/adjust_n.R
 bac6345aa764ae65660ff18897780fe9 *R/composites.R
 7f4024bcc069f886b48a74d977fa40bd *R/compute_dmod.R
@@ -15,7 +15,7 @@ b5f30bfd7148035c4a42f81117322178 *R/correct_r.R
 a839e51af7b11c4f94c998b835b0a60c *R/create_ad.R
 702c119ca0862cf0b2f11a6b99d4ab30 *R/create_ad_list.R
 c4dbc8a5eee908add1edb3d440d40b52 *R/create_ad_wrappers.R
-0139df798ff50cdbfc9bf19f180822af *R/data_doc.R
+aef252f371ee421e600339dfa77de5f7 *R/data_doc.R
 2009eb51694603845252300d3d13c29b *R/developer_utils.R
 28cb18870508580e779f9586cc986d4b *R/estimate_artifacts.R
 c08daa107617f86d26257b0324cd3a9c *R/estimate_mixture.R
@@ -28,7 +28,7 @@ ebf78fb3212c7523cad8ecdc4adc2dbf *R/estimate_var_artifacts.R
 b4295c217a15d4e466ab5a24c0263290 *R/filter_ma.R
 c5d29a46ab090e8b3eebbd57a66ef579 *R/filters.R
 b15d309de7ef3afba0edb20d24265103 *R/get_stuff.R
-ccc11dd89599a90022cbd688244feef4 *R/heterogeneity.R
+56aeed0836f99b04cff7d62e2f7d5c30 *R/heterogeneity.R
 5a95467695be2b683c9ef7b86336a691 *R/impute_artifacts.R
 615384f275a627c34052bad4179dc881 *R/impute_artifacts_wrapper.R
 cc1a49d4c7c898142a37a835e713153e *R/intervals.R
@@ -51,7 +51,7 @@ dab6e34ab6ea006b6cff92dc14d194ce *R/ma_r_ad_rb_orig.R
 6e7be984687057fe43f32f169e26edcb *R/ma_r_ad_uvdrr.R
 e8703f5090c43675a6f5341550e73358 *R/ma_r_ad_uvirr.R
 718dabd1ef4d2a0f52ce57d49805c10d *R/ma_r_bb.R
-3f24bb0086f295506d21355e8fa44b4f *R/ma_r_ic.R
+1a191105fdd808286859b4ff6924a148 *R/ma_r_ic.R
 6a85953d995a45010951239bd49af54d *R/ma_r_order2.R
 4b72ba75c39870656e618b8826798afd *R/ma_wrappers.R
 93df298c2b528608cfa8779b4843556d *R/metareg.R
@@ -60,11 +60,11 @@ da3cb7dd3cfc3741d8fe421fdeac5ee4 *R/methods_anova.R
 f8e0f7cfa7e921d8ee225edae7c8f1c4 *R/methods_dplyr_ma_psychmeta.R
 2aa8bb340f31834b08f2c636f3961d29 *R/methods_dplyr_ma_table.R
 ef98050dcda7d91db411f6e34b83c803 *R/methods_predict.R
-6428c528c468fc4d7c2c788ae7ca1767 *R/methods_print.R
+baf29e7f70ca20822030a012cf29627e *R/methods_print.R
 29c8ca57f3286107a832a530f3c42faa *R/methods_reattribute.R
 e70071c96c3e4fcee911e357158ade34 *R/methods_summary.R
 d2750f5ca87e82d4da4d9cb7a7fe3245 *R/mix_matrix.R
-a55d0aa3c537138e1a49908750d884d2 *R/output.R
+5d893e748b041886230adcbce2a50dac *R/output.R
 98b3a029887dd9b8a3f68573d5c56946 *R/plotting.R
 3927972a6d5e25e066c3bb8a54626b21 *R/psychmeta.R
 714560e575076610bfe8eb0851108959 *R/remove_dependency.R
@@ -88,8 +88,8 @@ abaa4a0ef4cb34b7a71a188ee250a0f4 *R/var_error.R
 5d55a1cf849fa9859c935a31b2838c93 *R/wrangle_data.R
 6ed31a378b94ce086e63924e72db4254 *R/wt_stat.R
 31e5ba508cbe86790a6b6e4d8fe573a5 *R/zzz.R
-5ecda5f001a2b94ed562c81a83e10978 *README.md
-7ce57714a344e2f9b3600b21e9108f47 *build/vignette.rds
+97cc84dee94058c33ad6bee23a2e96af *README.md
+4c37eeb6073cafb22e442976f4fac2eb *build/vignette.rds
 85f7ff369306618137de7f9c29945de0 *data/data_d_bb_multi.RData
 558549e1f3e67959b0d5d7a2c24dabe7 *data/data_d_meas_multi.RData
 c8e1aac150f8db7136ae5234357eff31 *data/data_r_bvdrr.RData
@@ -104,9 +104,12 @@ a07f2e9c9fffc98d9a0d8ac79e344bf5 *data/data_r_mcleod_2007.RData
 cb7f293c49962552ac10f4bc4ffcdd92 *data/data_r_uvdrr.RData
 ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
-15d8d93f5bb42a298d77700ab47d8996 *inst/doc/barebones_correlation.R
-ae9b5b221d4107b2089c3fa639ae5fcb *inst/doc/barebones_correlation.Rmd
-8904100ab0d12a59853a6553574ed634 *inst/doc/barebones_correlation.html
+15d8d93f5bb42a298d77700ab47d8996 *inst/doc/ma_r.R
+c3add4d9b3ae3b88c0c83b3c445be898 *inst/doc/ma_r.Rmd
+bbe1546ae87e24e8038af9c8f58fb94a *inst/doc/ma_r.html
+643e3a4eebb12daecae02beac8dea432 *inst/doc/overview.R
+98df37f64349afdd6f7872249790de28 *inst/doc/overview.Rmd
+7f443aa0b3d311c15dab2ff3904f47f8 *inst/doc/overview.html
 723bb11263aa5a6cf928971f22783443 *inst/templates/header.tex
 80294a2ba424c33ef4457260df125a88 *inst/templates/reference_docx.docx
 398161b0cfea256fb85a2ad0071d6fb2 *inst/templates/reference_docx_landscape.docx
@@ -130,7 +133,7 @@ d3004939889467354a81c31fae6855d2 *man/compute_alpha.Rd
 e96e4d77140439b27423a37bccdf5edd *man/compute_dmod.Rd
 3addd87ce1afb6da1dd7782d56400265 *man/compute_dmod_npar.Rd
 0aa27bed7ad507ec745ac64e5aa40f44 *man/compute_dmod_par.Rd
-4c5e2249bf3d796cbbc76f4a72f3bffe *man/conf.limits.nc.chisq.Rd
+77be0979599b195699c2cac57555cc03 *man/conf.limits.nc.chisq.Rd
 70cf224190ba3a19861453a587bbadbc *man/confidence.Rd
 e672710cfdc25bfb528735c0f1860afb *man/confidence_r.Rd
 67a01948b6c4902748a6e2d9ec190065 *man/confint.Rd
@@ -169,7 +172,7 @@ b3c0aaebbaedc3959ec6de91f38fa97c *man/data_r_gonzalezmule_2014.Rd
 5f0727ba237b18ce931e488386cafbb7 *man/data_r_mcleod_2007.Rd
 5084a107908833cd61dc7fcad5ef9a47 *man/data_r_meas.Rd
 524057ecc9d5221a3395c10e327c3d12 *man/data_r_meas_multi.Rd
-ce7a0f57583eb6d2eabcaf99c52c4a9a *man/data_r_oh_2009.Rd
+c6f0b7dee08f431b5eefccf6e7a0a7ee *man/data_r_oh_2009.Rd
 2f7913e7d41226f44906c5be7363cb25 *man/data_r_roth_2015.Rd
 c4c9b2b1b2ac7438ef686bff116f26ce *man/data_r_uvdrr.Rd
 affdbb89813c2dc452c1cd6d7f65650c *man/data_r_uvirr.Rd
@@ -239,9 +242,9 @@ e3d915b9a9aaeecb94705439d632f5e2 *man/filter_r_bar.Rd
 78a3de469042c1cbd9e2ba27695a02ab *man/filter_rel.Rd
 e96a3d2875580bd5ac238f1eb32818e0 *man/filter_u.Rd
 a8b833240baea3c1cd7011f836044005 *man/format_long.Rd
-cc0d1ceeda2d683fc0c50d6200c2383a *man/format_num.Rd
+c1b379fbaaec77997e807e128c65db45 *man/format_num.Rd
 fad8b06848b0102851e3ed3772f98dae *man/format_wide.Rd
-6e59da1d1477dc2e19abdcf5fa69af66 *man/generate_bib.Rd
+68510591fc70e4d537deb2f37bf623b7 *man/generate_bib.Rd
 b8e061b2ef1aad457865aee09c280a95 *man/generate_directory.Rd
 c7494ec9b625740d49e657796708f492 *man/get_stuff.Rd
 92e5539cf1b0ab81a26c7fd779ab48be *man/heterogeneity.Rd
@@ -276,8 +279,8 @@ cb9a99c134177ebf052ab8d9479845c8 *man/ma_wrapper.Rd
 29169b084a965832cc6653c3d15b2eeb *man/manage_arglength.Rd
 c69ad5251607ca5aa1aa3477832f8519 *man/merge_simdat_d.Rd
 4e39b9ee1cd5af321f4b91bf164d8b6f *man/merge_simdat_r.Rd
-0d06ba4e1041c0ecdec58a46c6bc3ad0 *man/metabulate.Rd
-79d479b23eed906786e2c688cf8579e4 *man/metabulate_rmd_helper.Rd
+0feb92336728881e5d36adb57c274b89 *man/metabulate.Rd
+40f42a684518af0e22edf0b01a5745b3 *man/metabulate_rmd_helper.Rd
 a50eb097385fea1ffc18f973277e1a70 *man/metareg.Rd
 ffaf59599233b35e9a8427c9ec0561dd *man/mix_dist.Rd
 9e2fb8903614123825f0d510b9c4936f *man/mix_matrix.Rd
@@ -337,5 +340,6 @@ c3da21327d7cc93afd03d96f38ac8beb *man/var_error_rel.Rd
 132d7b70157c6fc1e232cfecb5202cc9 *tests/testthat.R
 645da18bc35413183275f14494b0235b *tests/testthat/test-adjust_n.R
 dd64f4587770f50fca3cd65fd9225ce8 *tests/testthat/test-convert_es.R
-ae9b5b221d4107b2089c3fa639ae5fcb *vignettes/barebones_correlation.Rmd
-c219494725327359b1af7c1685069eb9 *vignettes/vignette.bib
+c3add4d9b3ae3b88c0c83b3c445be898 *vignettes/ma_r.Rmd
+98df37f64349afdd6f7872249790de28 *vignettes/overview.Rmd
+669326b31bf73f9467e58aac67c7e197 *vignettes/vignette.yaml

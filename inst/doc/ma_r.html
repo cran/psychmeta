@@ -12,9 +12,9 @@
 
 <meta name="author" content="Brenton Wiernik" />
 
-<meta name="date" content="2020-07-11" />
+<meta name="date" content="2020-09-09" />
 
-<title>Barebones Meta-Analysis of Correlations</title>
+<title>Meta-analyzing correlations</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -313,17 +313,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Barebones Meta-Analysis of Correlations</h1>
+<h1 class="title toc-ignore">Meta-analyzing correlations</h1>
 <h4 class="author">Brenton Wiernik</h4>
-<h4 class="date">2020-07-11</h4>
+<h4 class="date">2020-09-09</h4>
 
 
 
-<p>This vignette will walk you through estimating barebones meta-analyses of correlations between multiple constructs.</p>
+<p><strong>Note: This vignette is a work in progress.</strong></p>
+<p>This vignette will walk you through estimating barebones meta-analyses of correlations between multiple constructs. For more vignettes, see the <a href="overview.html"><strong>psychmeta</strong> overview</a>.</p>
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
 <p>To begin, you will need your meta-analytic data sheet for analysis. We recommend the <strong>rio</strong> package for importing data to <strong>R</strong>. For an introduction to <strong>rio</strong>, see <code>vignette(&quot;rio&quot;, &quot;rio&quot;)</code>.</p>
-<p><strong>psychmeta</strong> assumes that your data are in “wide” format, with each row corresponding to one effect size. For example, this is the format used in this data frame:</p>
+<p><strong>psychmeta</strong> assumes that your data are in “long” format, with each row corresponding to one effect size. For example, this is the format used in this data frame:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(data_r_meas_multi[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,])</span></code></pre></div>
 <table>
 <thead>
@@ -452,13 +453,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </tr>
 </tbody>
 </table>
-<p>In this table, - <strong><code>sample_id</code></strong> contains labels indicating the sample each effect size is drawn from; - <strong><code>moderator</code></strong> is a moderator variable, each row containing the effect size’s level for that moderator; - <strong><code>x_name</code></strong> and <strong><code>y_name</code></strong> are columns indicating the variables/constructs being related in the effect size; - <strong><code>n</code></strong> is the sample size for the effect size; - <strong><code>rxyi</code></strong> is the effect size (the correlation between the two constructs/variables); - <strong><code>rxxi</code></strong> and <strong><code>rxyi</code></strong> are the sample reliability values for the measures of the <code>x_name</code> and <code>y_name</code> variables, respectively; - <strong><code>citekey</code></strong> containts the citations keys for each study (used to generate bibliographies of included studies).</p>
+<p>In this table, - <strong><code>sample_id</code></strong> contains labels indicating the sample each effect size is drawn from; - <strong><code>moderator</code></strong> is a moderator variable, each row containing the effect size’s level for that moderator; - <strong><code>x_name</code></strong> and <strong><code>y_name</code></strong> are columns indicating the variables/constructs being related in the effect size; - <strong><code>n</code></strong> is the sample size for the effect size; - <strong><code>rxyi</code></strong> is the effect size (the correlation between the two constructs/variables); - <strong><code>rxxi</code></strong> and <strong><code>ryyi</code></strong> are the sample reliability values for the measures of the <code>x_name</code> and <code>y_name</code> variables, respectively; - <strong><code>citekey</code></strong> contains the citations keys for each study (used to generate bibliographies of included studies).</p>
 <p>You can see this data set includes correlations among three variables: <code>X</code>, <code>Y</code>, and <code>Z</code>, and that each sample contributes several effect sizes, one each for for different pairs of variables/constructs.</p>
-<p>If your data are in a different format, you can use the <code>reshape_wide2long()</code> function to reshape it. See also <code>vignette(&quot;pivot&quot;, &quot;tidyr&quot;)</code>.</p>
+<p>If your data are in a different format, you can use the <code>reshape_wide2long()</code> function to reshape it.</p>
 </div>
 <div id="estimating-a-barebones-meta-analysis" class="section level2">
 <h2>Estimating a Barebones Meta-Analysis</h2>
-<p>Let’s assume your data sheet is called <code>coding_sheet</code>.</p>
+<p>Let’s assume your data frame is called <code>coding_sheet</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>coding_sheet &lt;-<span class="st"> </span>data_r_meas_multi</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">head</span>(coding_sheet)</span>
@@ -481,7 +482,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  **** Running ma_r: Meta-analysis of correlations ****</span></span></code></pre></div>
 <ul>
 <li><strong><code>data</code></strong> is your data frame.</li>
-<li><strong><code>rxyi</code></strong>, <strong><code>n</code></strong>, <strong><code>sample_id</code></strong>, and <strong><code>moderators</code></strong> are the names of the columns in your data sheet that contain the appropriate values.
+<li><strong><code>rxyi</code></strong>, <strong><code>n</code></strong>, <strong><code>construct_x</code></strong>, <strong><code>construct_y</code></strong>, <strong><code>sample_id</code></strong>, and <strong><code>moderators</code></strong> are the names of the columns in your data frame that contain the appropriate values.
 <ul>
 <li><strong><code>rxyi</code></strong> is the correlation effect sizes;</li>
 <li><strong><code>n</code></strong> is the sample sizes;</li>
@@ -567,7 +568,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li><strong><code>se_r</code></strong> is the standard error of <code>mean_r</code>.</li>
 <li><strong><code>sd_res</code></strong> is the estimated random-effects standard deviation (residual <em>SD</em> of correlations after accounting for sampling error).</li>
 <li><strong><code>CI_LL_95</code></strong> and <strong><code>CI_UL_95</code></strong> are the upper and lower bounds of the confidence interval for <code>mean_r</code>; the number indicates the coverage level (default: 95%).</li>
-<li><strong><code>CR_LL_95</code></strong> and <strong><code>CR_UL_95</code></strong> are the upper and lower bounds of the credibility interval for the estimated population distribution; the number indicates the coverage level (default: 80%).</li>
+<li><strong><code>CR_LL_80</code></strong> and <strong><code>CR_UL_80</code></strong> are the upper and lower bounds of the credibility interval for the estimated population distribution; the number indicates the coverage level (default: 80%).</li>
 </ul>
 <p>To view additional results, such as observed variance (<code>var_r</code>) or standard deviation of sampling errors (<code>sd_e</code>), use the <code>get_metatab()</code> function and select the appropriate columns:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">names</span>(<span class="kw">get_metatab</span>(ma_res))</span>
@@ -625,6 +626,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
 <span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
 <span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
+</div>
+<div id="correcting-for-statistical-artifacts" class="section level3">
+<h3>Correcting for Statistical Artifacts</h3>
+<p>See Artifact corrections](artifact_corrections.html).</p>
 </div>
 </div>
 <div id="outputting-results" class="section level2">
@@ -684,9 +689,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb14-14"><a href="#cb14-14"></a><span class="co">#&gt; </span></span>
 <span id="cb14-15"><a href="#cb14-15"></a><span class="co">#&gt; Random effects variance estimates</span></span>
 <span id="cb14-16"><a href="#cb14-16"></a><span class="co">#&gt; ---------------------------------</span></span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="co">#&gt; Hunter-Schmidt method:</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a><span class="co">#&gt;   sd_res  (tau):   0.113, SE = 0.016, 95% CI = [0.088, 0.152] </span></span>
-<span id="cb14-19"><a href="#cb14-19"></a><span class="co">#&gt;   var_res (tau^2): 0.013, SE = 0.004, 95% CI = [0.008, 0.023] </span></span>
+<span id="cb14-17"><a href="#cb14-17"></a><span class="co">#&gt; Hunter-Schmidt method (with k-correction):</span></span>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="co">#&gt;   sd_res  (tau):   0.113, SE = 0.000, 95% CI = [0.088, 0.152] </span></span>
+<span id="cb14-19"><a href="#cb14-19"></a><span class="co">#&gt;   var_res (tau^2): 0.013, SE = 0.000, 95% CI = [0.008, 0.023] </span></span>
 <span id="cb14-20"><a href="#cb14-20"></a><span class="co">#&gt; </span></span>
 <span id="cb14-21"><a href="#cb14-21"></a><span class="co">#&gt;   Q statistic: 222.862 (df = 39, p = 0.000) </span></span>
 <span id="cb14-22"><a href="#cb14-22"></a><span class="co">#&gt;   H: 2.390   H^2: 5.714   I^2: 82.500</span></span>
@@ -714,7 +719,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="publication-bias-and-sensitivity-analyses" class="section level3">
 <h3>Publication Bias and Sensitivity Analyses</h3>
-<p><strong>psychmeta</strong> supports cumulative meta-analysis for publication/small-sample bias detection, leave-1-out sensitivity analyses, and bootstrap confidence interavals using the sensitivity function:</p>
+<p><strong>psychmeta</strong> supports cumulative meta-analysis for publication/small-sample bias detection, leave-1-out sensitivity analyses, and bootstrap confidence intervals using the sensitivity function:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ma_res &lt;-<span class="st"> </span><span class="kw">sensitivity</span>(ma_res)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;  **** Computing sensitivity analyses ****</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt; Bootstrapped meta-analyses have been added to &#39;ma_obj&#39; - use get_bootstrap() to retrieve them.</span></span>
