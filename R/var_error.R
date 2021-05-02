@@ -7,17 +7,19 @@
 #' @return A vector of sampling-error variances.
 #' @export
 #'
+#' @md
+#'
 #' @references
 #' Schmidt, F. L., & Hunter, J. E. (2015).
-#' \emph{Methods of meta-analysis: Correcting error and bias in research findings} (3rd ed.).
-#' Thousand Oaks, CA: Sage. \url{https://doi.org/10/b6mg}. p. 99.
+#' *Methods of meta-analysis: Correcting error and bias in research findings* (3rd ed.).
+#' Thousand Oaks, CA: Sage. \doi{10.4135/9781483398105}. p. 99.
 #'
 #' @details
-#' The sampling variance of a correlation is:
+#' The sampling variance of a Pearson correlation is approximately:
 #'
 #' \deqn{var_{e}=\frac{(1-r^{2})^{2}}{n-1}}{var_e = (1 - r^2)^2 / (n - 1)}
 #'
-#' This can be corrected for bias by first correcting the correlation (see \code{\link{correct_r_bias}}) prior to estimating the error variance.
+#' This can be corrected for bias in the sample correlation by first correcting the correlation (see [correct_r_bias()]) prior to estimating the error variance.
 #'
 #'
 #' @examples
@@ -30,6 +32,40 @@ var_error_r <- function(r, n, correct_bias = TRUE){
 
      if(correct_bias) r <- correct_r_bias(r = r, n = n)
      (1 - r^2)^2 / (n - 1)
+}
+
+
+#' Estimate the error variance of Spearman rank correlations
+#'
+#' Estimates the variance of Spearman rank correlations using the Fieller correction.
+#'
+#' @param r Vector of rank correlations.
+#' @param n Vector of sample sizes.
+#' @param correct_bias Logical argument that determines whether to correct error-variance estimates for small-sample bias in correlations (TRUE) or not (FALSE).
+#'
+#' @return A vector of sampling-error variances.
+#' @export
+#'
+#' @md
+#'
+#' @references
+#' Bishara, A. J., & Hittner, J. B. (2017).
+#' Confidence intervals for correlations when data are not normal.
+#' *Behavior Research Methods, 49*(1), 294–309. \doi{10.3758/s13428-016-0702-8}
+#'
+#' @details
+#' The sampling variance of a Spearman rank correlation is approximately:
+#'
+#' \deqn{var_{e}=\frac{1.06 \times (1-r^{2})^{2}}{n-1}}{var_e = 1.06 * (1 - r^2)^2 / (n - 1)}
+#'
+#' This can be corrected for bias in the sample correlation by first correcting the correlation (see [correct_r_bias()]) prior to estimating the error variance.
+#'
+#'
+#' @examples
+#' var_error_spearman(r = .3, n = 30, correct_bias = TRUE)
+#' var_error_spearman(r = .3, n = 30, correct_bias = FALSE)
+var_error_spearman <- function(r, n, correct_bias = TRUE){
+  1.06 * var_error_r(r, n, correct_bias =)
 }
 
 
@@ -46,10 +82,9 @@ var_error_r <- function(r, n, correct_bias = TRUE){
 #'
 #' @md
 #' @references
-#' Dahlke, J. A., & Wiernik, B. M. (2019). Not restricted to selection research:
+#' Dahlke, J. A., & Wiernik, B. M. (2020). Not restricted to selection research:
 #' Accounting for indirect range restriction in organizational research.
-#' _Organizational Research Methods_. Advance online publication.
-#' <https://doi.org/10.1177/1094428119859398>
+#' *Organizational Research Methods, 23*(4), 717–749. \doi{10.1177/1094428119859398}
 #'
 #' @details
 #' The sampling variance of a u ratio is computed differently for independent samples (i.e., settings where the referent unrestricted standard deviation comes from an different sample than the range-restricted standard deviation) than for dependent samples (i.e., unrestricted samples from which a subset of individuals are selected to be in the incumbent sample).
@@ -105,14 +140,13 @@ var_error_u <- function(u, ni, na = NA, dependent_sds = FALSE){
 #'
 #' @md
 #' @references
-#' Dahlke, J. A., & Wiernik, B. M. (2019). Not restricted to selection research:
+#' Dahlke, J. A., & Wiernik, B. M. (2020). Not restricted to selection research:
 #' Accounting for indirect range restriction in organizational research.
-#' _Organizational Research Methods_. Advance online publication.
-#' <https://doi.org/10.1177/1094428119859398>
+#' *Organizational Research Methods, 23*(4), 717–749. \doi{10.1177/1094428119859398}
 #'
 #' Duhachek, A., & Iacobucci, D. (2004).
 #' Alpha’s standard error (ASE): An accurate and precise confidence interval estimate.
-#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \url{https://doi.org/10.1037/0021-9010.89.5.792}
+#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \doi{10.1037/0021-9010.89.5.792}
 #'
 #' @examples
 #' var_error_rel(rel = .8, n = 100)
@@ -167,14 +201,13 @@ var_error_rel <- function(rel, n, rel_type = "alpha", k_items = NULL){
 #'
 #' @md
 #' @references
-#' Dahlke, J. A., & Wiernik, B. M. (2019). Not restricted to selection research:
+#' Dahlke, J. A., & Wiernik, B. M. (2020). Not restricted to selection research:
 #' Accounting for indirect range restriction in organizational research.
-#' _Organizational Research Methods_. Advance online publication.
-#' <https://doi.org/10.1177/1094428119859398>
+#' *Organizational Research Methods, 23*(4), 717–749. \doi{10.1177/1094428119859398}
 #'
 #' Duhachek, A., & Iacobucci, D. (2004).
 #' Alpha’s standard error (ASE): An accurate and precise confidence interval estimate.
-#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \url{https://doi.org/10.1037/0021-9010.89.5.792}
+#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \doi{10.1037/0021-9010.89.5.792}
 #'
 #' @examples
 #' var_error_q(q = .8, n = 100)
@@ -222,10 +255,12 @@ var_error_q <- function(q, n, rel_type = "alpha", k_items = NULL){
 #' @return A vector of sampling-error variances.
 #' @export
 #'
+#' @md
+#'
 #' @references
 #' Schmidt, F. L., & Hunter, J. E. (2015).
-#' \emph{Methods of meta-analysis: Correcting error and bias in research findings} (3rd ed.).
-#' Thousand Oaks, CA: Sage. \url{https://doi.org/10/b6mg}. pp. 292–295.
+#' *Methods of meta-analysis: Correcting error and bias in research findings* (3rd ed.).
+#' \doi{10.4135/9781483398105}. pp. 292–295.
 #'
 #' @details
 #' The sampling variance of a \emph{d} value is:
@@ -379,7 +414,7 @@ var_error_g <- function(g, n1, n2 = NA, a_method = c("gamma", "approx")) {
 #' @references
 #' Duhachek, A., & Iacobucci, D. (2004).
 #' Alpha’s standard error (ASE): An accurate and precise confidence interval estimate.
-#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \url{https://doi.org/10.1037/0021-9010.89.5.792}
+#' \emph{Journal of Applied Psychology, 89}(5), 792–808. \doi{10.1037/0021-9010.89.5.792}
 #'
 #' @examples
 #' item_mat <- matrix(.3, 5, 5)
@@ -433,7 +468,7 @@ var_error_alpha <- function(item_mat = NULL, alpha = NULL, k_items = NULL, n_cas
 #' @references
 #' Ruscio, J. (2008).
 #' A probability-based measure of effect size: Robustness to base rates and other factors.
-#' \emph{Psychological Methods, 13}(1), 19–30. \url{https://doi.org/10.1037/1082-989X.13.1.19}
+#' \emph{Psychological Methods, 13}(1), 19–30. \doi{10.1037/1082-989X.13.1.19}
 #'
 #' @details
 #' The sampling variance of a \emph{A} (also called \emph{AUC} [area under curve] or \emph{CLES} [common-language effect size]) value is:
@@ -492,10 +527,10 @@ var_error_cles <- function(A, n1, n2 = NA){
 #' @references
 #' Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003).
 #' \emph{Applied multiple regression/correlation analysis for the behavioral sciences} (3rd ed.).
-#' Mahwah, NJ: Erlbaum. \url{https://doi.org/10/crtf}. p. 88.
+#' Mahwah, NJ: Erlbaum. \doi{10/crtf}. p. 88.
 #'
 #' Olkin, I., & Finn, J. D. (1995). Correlations redux.
-#' \emph{Psychological Bulletin, 118}(1), 155–164. https://doi.org/10/bt48vd
+#' \emph{Psychological Bulletin, 118}(1), 155–164. \doi{10/bt48vd}
 #'
 #' @details
 #' The sampling variance of a multiple correlation is approximately:
@@ -546,3 +581,5 @@ var_error_R <- function(R, n, p){
 var_error_Rsq <- function(Rsq, n, p){
         var_error_mult_Rsq(Rsq, n, p)
 }
+
+

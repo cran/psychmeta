@@ -32,7 +32,7 @@ add the \code{unicode-math} package to your LaTeX header instead.
 
 (Note that \code{header-includes} is generally discouraged in favor of adding
 an \code{include} argument to specific output formats, see
-\url{https://bookdown.org/yihui/rmarkdown/pdf-document.html}.)
+\url{https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes}.)
 }
 
 \section{HTML output}{

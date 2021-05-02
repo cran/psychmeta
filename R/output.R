@@ -230,7 +230,7 @@ format_num <- function(x, digits = 2L, decimal.mark = getOption("OutDec"),
 #'
 #' (Note that \code{header-includes} is generally discouraged in favor of adding
 #' an \code{include} argument to specific output formats, see
-#' \url{https://bookdown.org/yihui/rmarkdown/pdf-document.html}.)
+#' \url{https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes}.)
 #'
 #' @section HTML output:
 #' If \code{html} is \code{TRUE} and you render to HTML (or related formats, see
