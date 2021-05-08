@@ -1,6 +1,6 @@
-53b098d6b6d99eaa80f13482f477515c *DESCRIPTION
+d4feb3ea98d28585f6ddf07a51e228cd *DESCRIPTION
 e76a7dfe64f78f432fcfc1a8751a9747 *NAMESPACE
-9e3ba2716aee20cbfab1af9ef21dc4c2 *NEWS
+7835939e9af794dbc8c969cf29cd11de *NEWS
 0a3fbee4fa3f6edc9a031622e9a5a34f *R/adjust_n.R
 9f0f6c55911c0e66373370749a0ae403 *R/composites.R
 783e446d5bcaa5fb0a9dcad95a5d94e6 *R/compute_dmod.R
@@ -36,11 +36,11 @@ cc1a49d4c7c898142a37a835e713153e *R/intervals.R
 af41c5092612708603d87b549b4b6ddc *R/lm_mat.R
 8135b62b15ea282360f57bfe321d5f7a *R/ma_d.R
 bbd8e265cf79f234e3051dbf7dab7276 *R/ma_d_ad.R
-1e9c14264ac0d9c783950a5dca6f6a7b *R/ma_d_bb.R
+eccc6f9013a79ba68ae36644ea9bbfbc *R/ma_d_bb.R
 ea20f3e72e2eea1f333befee7ccd4953 *R/ma_d_ic.R
 79f5156ffedd08d6c4ae48ebc9b68a8b *R/ma_d_order2.R
-47b02b93096f798143e8fe3f257db68b *R/ma_generic.R
-a9ddc6af952dfb1708cc7ed055ea56f5 *R/ma_r.R
+ceb267d4e38c8f950466a22f30856807 *R/ma_generic.R
+d491e3c416f39c55e2bbed3c6bf3f6a6 *R/ma_r.R
 abddab08dbe7d03d9845e91554c3f82f *R/ma_r_ad.R
 3b732636cd1e93fa5150040c6b450d1f *R/ma_r_ad_bvdrr.R
 cd78be68238c9bde95d3f567bb43b08b *R/ma_r_ad_bvirr.R
@@ -50,8 +50,8 @@ ee14f8b3f0a9b4df26a16c10e83b56c6 *R/ma_r_ad_meas.R
 4efb02de56f207b2bab071666f577727 *R/ma_r_ad_rb_orig.R
 e937b5d31ea17c5be8b2c583641120c6 *R/ma_r_ad_uvdrr.R
 481e55312ca7a91cd80906404862d1e6 *R/ma_r_ad_uvirr.R
-835ab652da4f6e95939c04966cf6cdff *R/ma_r_bb.R
-54b60b5eea7dfb243b7d02675dc0d05c *R/ma_r_ic.R
+402fc7e006f09a9e60f287fa0ad2c6fa *R/ma_r_bb.R
+4263c628b64cca708c877d33660cc6eb *R/ma_r_ic.R
 6a85953d995a45010951239bd49af54d *R/ma_r_order2.R
 4b72ba75c39870656e618b8826798afd *R/ma_wrappers.R
 93df298c2b528608cfa8779b4843556d *R/metareg.R
@@ -67,7 +67,7 @@ d2750f5ca87e82d4da4d9cb7a7fe3245 *R/mix_matrix.R
 bc6da3d995e391fc47cb39f7b15eb33a *R/output.R
 dcb1853a1d0e911a7b7523be0d97c396 *R/plotting.R
 3927972a6d5e25e066c3bb8a54626b21 *R/psychmeta.R
-5c9fb7e0519f19c8874f07581c61fbe0 *R/remove_dependency.R
+86c250dca34c9e4a5bead25e3e43d558 *R/remove_dependency.R
 1cca14ed9cd9cb55e58f765c1a1518c9 *R/reshape.R
 905ad29dc9a5890c1d388cdfda475fe7 *R/sensitivity.R
 b543ac26b35b3122426108f1973ad1d7 *R/sensitivity_bootstrap.R
@@ -85,11 +85,11 @@ fbd3b061c8a223c50728ab9ee2547ee9 *R/tmvtnorm.R
 f80538d3dc4a2699e8c0ecfdb2f5beaf *R/var_error.R
 dd606e3ad82731d1a79a2288190fdde9 *R/var_error_tsa.R
 3f0c185c2bbd7039e332d576c40e9584 *R/wrangle_ads.R
-5d55a1cf849fa9859c935a31b2838c93 *R/wrangle_data.R
+29282094b7efaab1686e40b0a09bbcb3 *R/wrangle_data.R
 6ed31a378b94ce086e63924e72db4254 *R/wt_stat.R
 31e5ba508cbe86790a6b6e4d8fe573a5 *R/zzz.R
 0affcbbfe25da69d78e00f90c43ce04b *README.md
-b2c446a2a37058d24705012fee11598f *build/partial.rdb
+86a1ffbe6e5b9a198856f2a94d3a9c6f *build/partial.rdb
 4c37eeb6073cafb22e442976f4fac2eb *build/vignette.rds
 85f7ff369306618137de7f9c29945de0 *data/data_d_bb_multi.RData
 558549e1f3e67959b0d5d7a2c24dabe7 *data/data_d_meas_multi.RData
@@ -107,7 +107,7 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
 15d8d93f5bb42a298d77700ab47d8996 *inst/doc/ma_r.R
 c3add4d9b3ae3b88c0c83b3c445be898 *inst/doc/ma_r.Rmd
-88b5cc15f63487919381e1c30fe90bcd *inst/doc/ma_r.html
+d2e48d59d482378f019044f371091f92 *inst/doc/ma_r.html
 643e3a4eebb12daecae02beac8dea432 *inst/doc/overview.R
 98df37f64349afdd6f7872249790de28 *inst/doc/overview.Rmd
 bcd8ab07ea2c921fc588f516ddc1d31b *inst/doc/overview.html
@@ -345,7 +345,7 @@ b87c2fa5b771a427075930d5a9f8bd21 *tests/testthat/test-adjust_n.R
 26f984701d95ed323816b3faf7b0c219 *tests/testthat/test-collapse_data_list.R
 15740ff4726f66c107c01ab5202a3784 *tests/testthat/test-convert_es.R
 efa767cd001c95b546cfb75bedeaccc4 *tests/testthat/test-distribute_logic.R
-d0040edf5b41feafe7f7915b00e63a12 *tests/testthat/test-ma_r.R
+a699826c114f33abe0d8e20cff5992fe *tests/testthat/test-ma_r.R
 31c9b46160a833b85816b8fd7e3ee0d0 *tests/testthat/test-scalar_arg_warning.R
 c3add4d9b3ae3b88c0c83b3c445be898 *vignettes/ma_r.Rmd
 98df37f64349afdd6f7872249790de28 *vignettes/overview.Rmd

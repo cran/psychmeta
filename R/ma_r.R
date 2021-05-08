@@ -513,7 +513,7 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
                  sign_rz = NULL, sign_rxz = 1, sign_ryz = 1,
                  moderators = NULL, cat_moderators = TRUE, moderator_type = c("simple", "hierarchical", "none"),
                  supplemental_ads = NULL, data = NULL, control = control_psychmeta(), ...){
-        
+
      ##### Get inputs #####
      call <- match.call()
      warn_obj1 <- record_warnings()
@@ -1161,8 +1161,8 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
      }else{
           continuous_moderators <- NULL
      }
-     if(!is.null(cleaned_data$citekey)) es_data <- cbind(citekey = cleaned_data$citekey, es_data)
-     if(!is.null(cleaned_data$sample_id)) es_data <- cbind(sample_id = cleaned_data$sample_id, es_data)
+     if(!is.null(cleaned_data$citekey)) es_data <- cbind(citekey = cleaned_data$citekey, es_data) %>% mutate(citekey = as.character(citekey))
+     if(!is.null(cleaned_data$sample_id)) es_data <- cbind(sample_id = cleaned_data$sample_id, es_data) %>% mutate(sample_id = as.character(sample_id))
 
      impute_out <- impute_artifacts_wrapper(impute_artifacts = impute_artifacts, clean_artifacts = clean_artifacts,
                                             ma_method = ma_method, sample_id = sample_id, data_x = data_x, data_y = data_y, n = n,
@@ -2025,7 +2025,7 @@ ma_r <- function(rxyi, n, n_adj = NULL, sample_id = NULL, citekey = NULL,
         if (length(facet_y) == 0) facet_y <- rep(NA, length(rxyi))
 
         # Checks inheriting
-        if (inherits(intercor, "control_intercor")) {
+        if (! inherits(intercor, "control_intercor")) {
                 if (is.list(intercor)) {
                         intercor <- do.call(control_intercor, args = intercor)
                 } else {
