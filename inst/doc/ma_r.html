@@ -12,7 +12,7 @@
 
 <meta name="author" content="Brenton Wiernik" />
 
-<meta name="date" content="2021-05-08" />
+<meta name="date" content="2021-05-31" />
 
 <title>Meta-analyzing correlations</title>
 
@@ -315,7 +315,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Meta-analyzing correlations</h1>
 <h4 class="author">Brenton Wiernik</h4>
-<h4 class="date">2021-05-08</h4>
+<h4 class="date">2021-05-31</h4>
 
 
 
@@ -620,12 +620,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">anova</span>(ma_res)</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have column names if `.name_repair` is omitted as of tibble 2.0.0.</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; Using compatibility `.name_repair`.</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator F value df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator F value df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
 </div>
 <div id="correcting-for-statistical-artifacts" class="section level3">
 <h3>Correcting for Statistical Artifacts</h3>
