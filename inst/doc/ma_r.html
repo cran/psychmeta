@@ -12,7 +12,7 @@
 
 <meta name="author" content="Brenton Wiernik" />
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2022-01-01" />
 
 <title>Meta-analyzing correlations</title>
 
@@ -29,9 +29,41 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
 });
 </script>
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -118,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -315,7 +348,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Meta-analyzing correlations</h1>
 <h4 class="author">Brenton Wiernik</h4>
-<h4 class="date">2021-05-31</h4>
+<h4 class="date">2022-01-01</h4>
 
 
 
@@ -509,7 +542,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>ma_res</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; Overview tibble of psychmeta meta-analysis of correlations  </span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; ---------------------------------------------------------------------- </span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; # A tibble: 9 x 8</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; # A tibble: 9 × 8</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y analysis_type    moderator  meta_tables      escalc          </span></span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; *       &lt;int&gt;   &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;       &lt;fct&gt;            &lt;fct&gt;      &lt;named list&gt;     &lt;named list&gt;    </span></span>
 <span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; 1           1       1 X           Y           Overall          All Levels &lt;named list [3]&gt; &lt;named list [4]&gt;</span></span>
@@ -580,18 +613,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; [1] 0.015607018 0.007854615 0.011804107 0.016601343 0.008502949 0.007418860 0.018751347 0.012097853 0.009938716</span></span></code></pre></div>
 <p>To view all columns of this table, convert it to a <code>data.frame</code> or <code>tibble</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>dplyr<span class="op">::</span><span class="kw">as_tibble</span>(<span class="kw">get_metatab</span>(ma_res))</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 9 x 20</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y analysis_type moderator     k     N mean_r   var_r   var_e var_res   sd_r   se_r   sd_e sd_res CI_LL_95 CI_UL_95</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;         &lt;int&gt;   &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;       &lt;fct&gt;         &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; 1           1       1 X           Y           Overall       All Leve…    40 11927  0.317 0.0156  0.00273 0.0129  0.125  0.0198 0.0523 0.113     0.277    0.357</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt; 2           2       1 X           Y           Simple Moder… 1            20  5623  0.397 0.00785 0.00255 0.00531 0.0886 0.0198 0.0504 0.0729    0.356    0.439</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt; 3           3       1 X           Y           Simple Moder… 2            20  6304  0.245 0.0118  0.00281 0.00899 0.109  0.0243 0.0530 0.0948    0.194    0.296</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt; 4           4       2 X           Z           Overall       All Leve…    40 11927  0.324 0.0166  0.00270 0.0139  0.129  0.0204 0.0520 0.118     0.282    0.365</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt; 5           5       2 X           Z           Simple Moder… 1            20  5623  0.422 0.00850 0.00242 0.00608 0.0922 0.0206 0.0492 0.0780    0.379    0.465</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt; 6           6       2 X           Z           Simple Moder… 2            20  6304  0.236 0.00742 0.00284 0.00458 0.0861 0.0193 0.0533 0.0677    0.195    0.276</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt; 7           7       3 Y           Z           Overall       All Leve…    40 11927  0.311 0.0188  0.00275 0.0160  0.137  0.0217 0.0525 0.126     0.268    0.355</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt; 8           8       3 Y           Z           Simple Moder… 1            20  5623  0.405 0.0121  0.00251 0.00959 0.110  0.0246 0.0501 0.0979    0.354    0.457</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 9           9       3 Y           Z           Simple Moder… 2            20  6304  0.228 0.00994 0.00286 0.00708 0.0997 0.0223 0.0535 0.0841    0.181    0.274</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 9 × 20</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y analysis_type   moderator     k     N mean_r   var_r   var_e var_res   sd_r   se_r   sd_e sd_res CI_LL_95 CI_UL_95</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;         &lt;int&gt;   &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;       &lt;fct&gt;           &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt; 1           1       1 X           Y           Overall         All Leve…    40 11927  0.317 0.0156  0.00273 0.0129  0.125  0.0198 0.0523 0.113     0.277    0.357</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt; 2           2       1 X           Y           Simple Moderat… 1            20  5623  0.397 0.00785 0.00255 0.00531 0.0886 0.0198 0.0504 0.0729    0.356    0.439</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt; 3           3       1 X           Y           Simple Moderat… 2            20  6304  0.245 0.0118  0.00281 0.00899 0.109  0.0243 0.0530 0.0948    0.194    0.296</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt; 4           4       2 X           Z           Overall         All Leve…    40 11927  0.324 0.0166  0.00270 0.0139  0.129  0.0204 0.0520 0.118     0.282    0.365</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt; 5           5       2 X           Z           Simple Moderat… 1            20  5623  0.422 0.00850 0.00242 0.00608 0.0922 0.0206 0.0492 0.0780    0.379    0.465</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt; 6           6       2 X           Z           Simple Moderat… 2            20  6304  0.236 0.00742 0.00284 0.00458 0.0861 0.0193 0.0533 0.0677    0.195    0.276</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt; 7           7       3 Y           Z           Overall         All Leve…    40 11927  0.311 0.0188  0.00275 0.0160  0.137  0.0217 0.0525 0.126     0.268    0.355</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt; 8           8       3 Y           Z           Simple Moderat… 1            20  5623  0.405 0.0121  0.00251 0.00959 0.110  0.0246 0.0501 0.0979    0.354    0.457</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 9           9       3 Y           Z           Simple Moderat… 2            20  6304  0.228 0.00994 0.00286 0.00708 0.0997 0.0223 0.0535 0.0841    0.181    0.274</span></span>
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 2 more variables: CR_LL_80 &lt;dbl&gt;, CR_UL_80 &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">as.data.frame</span>(<span class="kw">get_metatab</span>(ma_res))</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt;   analysis_id pair_id construct_x construct_y    analysis_type  moderator  k     N    mean_r       var_r       var_e     var_res       sd_r       se_r</span></span>
@@ -618,12 +651,14 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h3>Moderator Analyses</h3>
 <p>Results for subgroup analyses for different levels of categorical moderators are shown in the rows of the meta-analysis results table. To estimate confidence intervals for differences between levels or an omnibus ANOVA statistic, use the <code>anova()</code> function:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">anova</span>(ma_res)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have column names if `.name_repair` is omitted as of tibble 2.0.0.</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; Using compatibility `.name_repair`.</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator F value df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;   pair_id construct_x construct_y moderator F value df_num df_denom level_1 level_2 mean_1 mean_2  diff CI_LL_95 CI_UL_95</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; 1       1           X           Y moderator    23.6      1     36.5       1       2  0.397  0.245 0.152   0.0887    0.216</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; 2       2           X           Z moderator    43.6      1     37.8       1       2  0.422  0.236 0.186   0.1292    0.243</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; 3       3           Y           Z moderator    28.7      1     37.6       1       2  0.405  0.228 0.178   0.1106    0.245</span></span></code></pre></div>
 </div>
 <div id="correcting-for-statistical-artifacts" class="section level3">
 <h3>Correcting for Statistical Artifacts</h3>
