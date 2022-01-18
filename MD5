@@ -1,6 +1,6 @@
-26f54985d05125d8a89a509d69b6d742 *DESCRIPTION
+ad516b357ec958455ef3c962e391f70e *DESCRIPTION
 de55ed703313cd2a8fafa16e0af3dc94 *NAMESPACE
-1372aa21df99c74e6a5298417a988755 *NEWS.md
+71977438d75e3aa806fc94ac469ecdd2 *NEWS.md
 b35e9bebfe170ae70791ded24aab6c15 *R/adjust_n.R
 f931b7a4d84989869271f900fcd50d43 *R/composites.R
 6a887b2577767efbb79bac0ad72d2831 *R/compute_dmod.R
@@ -89,8 +89,8 @@ fbd3b061c8a223c50728ab9ee2547ee9 *R/tmvtnorm.R
 088cae053b227a8dbb367714a81d503f *R/wt_stat.R
 5c9bc77672e8898766def5fead42f75f *R/zzz.R
 88a71b4920732ca96285ccd82d1bfc10 *README.md
-7defb89cf8f361f4e9c1fd52161e2471 *build/partial.rdb
-3d7c6b7608ceba87bc65ab0f6c3d6b1f *build/psychmeta.pdf
+64606a734899fe442a28981885073db8 *build/partial.rdb
+412342d0b5f02e5b75574693e08db076 *build/psychmeta.pdf
 4c37eeb6073cafb22e442976f4fac2eb *build/vignette.rds
 85f7ff369306618137de7f9c29945de0 *data/data_d_bb_multi.RData
 558549e1f3e67959b0d5d7a2c24dabe7 *data/data_d_meas_multi.RData
@@ -108,9 +108,9 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
 15d8d93f5bb42a298d77700ab47d8996 *inst/doc/ma_r.R
 5d317a73a4185ce7b8d288a14057fab4 *inst/doc/ma_r.Rmd
-23e6d13feb07a4cbbcbb88d896cd9b23 *inst/doc/ma_r.html
+a925a3e60fc950c93f4267d14ce6e440 *inst/doc/ma_r.html
 643e3a4eebb12daecae02beac8dea432 *inst/doc/overview.R
-98df37f64349afdd6f7872249790de28 *inst/doc/overview.Rmd
+38ce58a70533157c89d130abb5e9c05e *inst/doc/overview.Rmd
 1cf2968f6f224af173a4618f70fd9cb2 *inst/doc/overview.html
 723bb11263aa5a6cf928971f22783443 *inst/templates/header.tex
 80294a2ba424c33ef4457260df125a88 *inst/templates/reference_docx.docx
@@ -350,5 +350,5 @@ cc41bd152e88f30dd935dcf46791b9e7 *tests/testthat/test-ma_r.R
 31c9b46160a833b85816b8fd7e3ee0d0 *tests/testthat/test-scalar_arg_warning.R
 e1769500fddfe75791c7dbbecd48a983 *vignettes/apa.csl
 5d317a73a4185ce7b8d288a14057fab4 *vignettes/ma_r.Rmd
-98df37f64349afdd6f7872249790de28 *vignettes/overview.Rmd
+38ce58a70533157c89d130abb5e9c05e *vignettes/overview.Rmd
 669326b31bf73f9467e58aac67c7e197 *vignettes/vignette.yaml
