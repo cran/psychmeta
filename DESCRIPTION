@@ -1,8 +1,8 @@
 Package: psychmeta
 Type: Package
 Title: Psychometric Meta-Analysis Toolkit
-Version: 2.6.2
-Date: 2022-01-17
+Version: 2.6.3
+Date: 2022-04-13
 Authors@R: c(person("Jeffrey A.", "Dahlke", role = c("aut", "cre"),
                      email = "jdahlke@humrro.org"),
               person("Brenton M.", "Wiernik", role = "aut", email = "brenton@psychmeta.com"),
@@ -25,7 +25,7 @@ Suggests: MASS, mvtnorm, nor1mix, bib2df, rmarkdown, knitr, stringi,
         cli, crayon, testthat (>= 2.1.0)
 RoxygenNote: 7.1.2.9000
 NeedsCompilation: no
-Packaged: 2022-01-17 22:51:40 UTC; jeffreydahlke
+Packaged: 2022-04-14 00:43:39 UTC; jeffreydahlke
 Author: Jeffrey A. Dahlke [aut, cre],
   Brenton M. Wiernik [aut],
   Wesley Gardiner [ctb] (Unit tests),
@@ -37,4 +37,4 @@ Author: Jeffrey A. Dahlke [aut, cre],
 Maintainer: Jeffrey A. Dahlke <jdahlke@humrro.org>
 RdMacros: mathjaxr
 Repository: CRAN
-Date/Publication: 2022-01-18 07:42:46 UTC
+Date/Publication: 2022-04-14 10:10:02 UTC

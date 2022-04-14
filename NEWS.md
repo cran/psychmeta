@@ -1,3 +1,10 @@
+# psychmeta 2.6.3 (2022-04-13)
+
+- Bug fix in SE for tau for models with `var_biased = TRUE`.
+
+- Bug fix for forest plots generated from the results of ma_generic().
+
+
 # psychmeta 2.6.2 (2022-01-17)
 
 - Made a superficial update to the overview vignette to satisfy CRAN's requirements.

@@ -1,6 +1,6 @@
-ad516b357ec958455ef3c962e391f70e *DESCRIPTION
+72bc9bbaddbfe3d056cf7a52dd9ef7ec *DESCRIPTION
 de55ed703313cd2a8fafa16e0af3dc94 *NAMESPACE
-71977438d75e3aa806fc94ac469ecdd2 *NEWS.md
+ae84091008548d66e4df057d05ad53e9 *NEWS.md
 b35e9bebfe170ae70791ded24aab6c15 *R/adjust_n.R
 f931b7a4d84989869271f900fcd50d43 *R/composites.R
 6a887b2577767efbb79bac0ad72d2831 *R/compute_dmod.R
@@ -28,7 +28,7 @@ c817521b6c6a2d5b7454325fb73ab92e *R/estimate_var_rho_tsa.R
 b4295c217a15d4e466ab5a24c0263290 *R/filter_ma.R
 c5d29a46ab090e8b3eebbd57a66ef579 *R/filters.R
 6102d683aad8e499354f99f1807c33c9 *R/get_stuff.R
-7e22c0ec01d6931a77b0d83e73f26df9 *R/heterogeneity.R
+5cdc58be2bdbf0677477bc00d7054bdb *R/heterogeneity.R
 5a95467695be2b683c9ef7b86336a691 *R/impute_artifacts.R
 615384f275a627c34052bad4179dc881 *R/impute_artifacts_wrapper.R
 6aae01cb51fd74fe99919eff292cad71 *R/intervals.R
@@ -65,7 +65,7 @@ baf29e7f70ca20822030a012cf29627e *R/methods_print.R
 e70071c96c3e4fcee911e357158ade34 *R/methods_summary.R
 d2750f5ca87e82d4da4d9cb7a7fe3245 *R/mix_matrix.R
 1edb3c31aa03de97a6389f5776b081f8 *R/output.R
-f29782ea63904c41c616202efa5c0a8a *R/plotting.R
+92e03cad98af13d88eb6f1d7483499d8 *R/plotting.R
 30165fe9832142f7e4c335988784393c *R/psychmeta.R
 08a9d9bd5d630ae92f021de6f2371b21 *R/remove_dependency.R
 66050b2beb6d07c28f8711beaaf987d8 *R/reshape.R
@@ -74,7 +74,7 @@ b543ac26b35b3122426108f1973ad1d7 *R/sensitivity_bootstrap.R
 0a5435b35b284f8b1cbce726e484b930 *R/sensitivity_cumulative.R
 1e1d0f4aa859bb00bf180e9bb42084b1 *R/sensitivity_leave1out.R
 a22ba4512545bb3c0f460f1e71ee25c1 *R/simulate.R
-11ee7fe5fc8742e507d6bb0b7b62e562 *R/simulate_d.R
+040c3924924b019d2d5a7ae5a458d8d0 *R/simulate_d.R
 b245efcf02e2f22e29a6f29030c61713 *R/simulate_d_legacy.R
 b86db943ca97c20f70d726a98a516cf2 *R/simulate_psych.R
 ca06230297632bc603de47084d89ee74 *R/simulate_r.R
@@ -88,9 +88,9 @@ fbd3b061c8a223c50728ab9ee2547ee9 *R/tmvtnorm.R
 29282094b7efaab1686e40b0a09bbcb3 *R/wrangle_data.R
 088cae053b227a8dbb367714a81d503f *R/wt_stat.R
 5c9bc77672e8898766def5fead42f75f *R/zzz.R
-88a71b4920732ca96285ccd82d1bfc10 *README.md
-64606a734899fe442a28981885073db8 *build/partial.rdb
-412342d0b5f02e5b75574693e08db076 *build/psychmeta.pdf
+a1e11e794d2ee846c268b4db2442ccc9 *README.md
+9831993bb4e97f5716e41dfb222c8a30 *build/partial.rdb
+fd434f4399c3a4d5b62fa2044fe95e6b *build/psychmeta.pdf
 4c37eeb6073cafb22e442976f4fac2eb *build/vignette.rds
 85f7ff369306618137de7f9c29945de0 *data/data_d_bb_multi.RData
 558549e1f3e67959b0d5d7a2c24dabe7 *data/data_d_meas_multi.RData
@@ -108,7 +108,7 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
 15d8d93f5bb42a298d77700ab47d8996 *inst/doc/ma_r.R
 5d317a73a4185ce7b8d288a14057fab4 *inst/doc/ma_r.Rmd
-a925a3e60fc950c93f4267d14ce6e440 *inst/doc/ma_r.html
+77c6e6fa79881bce57bf7acca448bc06 *inst/doc/ma_r.html
 643e3a4eebb12daecae02beac8dea432 *inst/doc/overview.R
 38ce58a70533157c89d130abb5e9c05e *inst/doc/overview.Rmd
 1cf2968f6f224af173a4618f70fd9cb2 *inst/doc/overview.html
@@ -310,7 +310,7 @@ a3115559a1c97b1a6f56358c9c96c25e *man/scalar_arg_warning.Rd
 a559ef309a18fc62d774f42a177ddb50 *man/screen_u.Rd
 f5fdc9b43c87b02253f9970181fed66e *man/sensitivity.Rd
 e60e0bfaa2d8d2df8b551d23679d2cd3 *man/simulate_alpha.Rd
-cdae71888a0821816bd7285ba1a46464 *man/simulate_d_database.Rd
+868fd6e9eda8d20c62a559a0e4542b28 *man/simulate_d_database.Rd
 4829df4ff60db2a667dc964be2a83fd2 *man/simulate_d_sample.Rd
 365e6bf49a02f3c92f7ec0081f153088 *man/simulate_matrix.Rd
 ffcc0b0b74f3e056b1f413056890e95c *man/simulate_psych.Rd
