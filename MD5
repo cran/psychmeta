@@ -1,6 +1,6 @@
-72bc9bbaddbfe3d056cf7a52dd9ef7ec *DESCRIPTION
+483d21321539b0a34dca4b4c2662e6ff *DESCRIPTION
 de55ed703313cd2a8fafa16e0af3dc94 *NAMESPACE
-ae84091008548d66e4df057d05ad53e9 *NEWS.md
+0f9e47c1833d78011a5d5eb62a7de07e *NEWS.md
 b35e9bebfe170ae70791ded24aab6c15 *R/adjust_n.R
 f931b7a4d84989869271f900fcd50d43 *R/composites.R
 6a887b2577767efbb79bac0ad72d2831 *R/compute_dmod.R
@@ -13,7 +13,7 @@ f2a1ed536889165ddcee29c0faa0c8f1 *R/correct_d.R
 fca5bbc88b260cb24ace3e382f474d06 *R/correct_r.R
 73b52a721b2f2c28db8dfd5334ec5b7e *R/correct_r_internal.R
 a839e51af7b11c4f94c998b835b0a60c *R/create_ad.R
-9eb202a6711fd695ce536381a24eaba7 *R/create_ad_list.R
+a2df2285337f6c50ec05dc1867b8ac07 *R/create_ad_list.R
 c4dbc8a5eee908add1edb3d440d40b52 *R/create_ad_wrappers.R
 4a5109a0ebf227e430ce29d8cdf34d26 *R/data_doc.R
 2009eb51694603845252300d3d13c29b *R/developer_utils.R
@@ -23,7 +23,7 @@ b99a0f08fcb27d29e57f9bfee4a3fb4c *R/estimate_prods.R
 f7d9a8d4cb70b7fad5b308e697b8f05a *R/estimate_u.R
 5734c16cb5a34a405baa3ae38bf6ba68 *R/estimate_var_artifacts.R
 740ad8fa419a3a93cc2e0f06b155316f *R/estimate_var_rho_int.R
-c817521b6c6a2d5b7454325fb73ab92e *R/estimate_var_rho_tsa.R
+156396b9944349e309d6b2d0d88eab06 *R/estimate_var_rho_tsa.R
 27c5ae282524cd26b80922039b1432e7 *R/estimate_var_tsa.R
 b4295c217a15d4e466ab5a24c0263290 *R/filter_ma.R
 c5d29a46ab090e8b3eebbd57a66ef579 *R/filters.R
@@ -89,8 +89,8 @@ fbd3b061c8a223c50728ab9ee2547ee9 *R/tmvtnorm.R
 088cae053b227a8dbb367714a81d503f *R/wt_stat.R
 5c9bc77672e8898766def5fead42f75f *R/zzz.R
 a1e11e794d2ee846c268b4db2442ccc9 *README.md
-9831993bb4e97f5716e41dfb222c8a30 *build/partial.rdb
-fd434f4399c3a4d5b62fa2044fe95e6b *build/psychmeta.pdf
+83db2868a4629760afc4b55958cd1770 *build/partial.rdb
+ff956118abefbc4310994dd9e4d23ae3 *build/psychmeta.pdf
 4c37eeb6073cafb22e442976f4fac2eb *build/vignette.rds
 85f7ff369306618137de7f9c29945de0 *data/data_d_bb_multi.RData
 558549e1f3e67959b0d5d7a2c24dabe7 *data/data_d_meas_multi.RData
@@ -108,7 +108,7 @@ ac35539cd8a9e915a475ca5adcb4ef3e *data/data_r_uvirr.RData
 0bf2a2e18051a853d3393ae9e938fbfb *inst/CITATION
 15d8d93f5bb42a298d77700ab47d8996 *inst/doc/ma_r.R
 5d317a73a4185ce7b8d288a14057fab4 *inst/doc/ma_r.Rmd
-77c6e6fa79881bce57bf7acca448bc06 *inst/doc/ma_r.html
+b6f9a4ea1818b1ab460166c0b515d451 *inst/doc/ma_r.html
 643e3a4eebb12daecae02beac8dea432 *inst/doc/overview.R
 38ce58a70533157c89d130abb5e9c05e *inst/doc/overview.Rmd
 1cf2968f6f224af173a4618f70fd9cb2 *inst/doc/overview.html
@@ -234,7 +234,7 @@ ef18808dfcb09c19312c921b9f78b5d0 *man/estimate_q_dist.Rd
 3f0026dc5fe06fc0d4962094c5fcbc73 *man/estimate_u.Rd
 30497ac82b08aa8f7d82d34fdf903f4f *man/estimate_var_artifacts.Rd
 7d8c783c12c3024442e7aaa235ad7408 *man/estimate_var_rho_int.Rd
-381ee845e529e29c8427da6c77e3808c *man/estimate_var_rho_tsa.Rd
+c2f618f8e9848839137d138cbae5e043 *man/estimate_var_rho_tsa.Rd
 0b15ca7603e103757250ae473b475368 *man/estimate_var_tsa.Rd
 bf805fb6baaf11b064591b4896318fb7 *man/figures/psychmeta_icon_twitter.png
 9e31516764508df986d745a6b50deb5d *man/filter_listnonnull.Rd
