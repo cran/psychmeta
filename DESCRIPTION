@@ -1,8 +1,8 @@
 Package: psychmeta
 Type: Package
 Title: Psychometric Meta-Analysis Toolkit
-Version: 2.6.4
-Date: 2022-07-09
+Version: 2.6.5
+Date: 2022-08-25
 Authors@R: c(person("Jeffrey A.", "Dahlke", role = c("aut", "cre"),
                      email = "jdahlke@humrro.org"),
               person("Brenton M.", "Wiernik", role = "aut", email = "brenton@psychmeta.com"),
@@ -19,13 +19,13 @@ Depends: R (>= 3.5.0)
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-Imports: stats, boot, metafor, ggplot2, progress, curl, mathjaxr,
-        dplyr, tibble, tidyr (>= 1.0.0), rlang, purrr
+Imports: stats, boot, metafor, ggplot2, progress, curl, dplyr, tibble,
+        tidyr (>= 1.0.0), rlang, purrr
 Suggests: MASS, mvtnorm, nor1mix, bib2df, rmarkdown, knitr, stringi,
         cli, crayon, testthat (>= 2.1.0)
-RoxygenNote: 7.1.2.9000
+RoxygenNote: 7.2.1.9000
 NeedsCompilation: no
-Packaged: 2022-07-10 00:03:46 UTC; jeffreydahlke
+Packaged: 2022-08-25 22:46:12 UTC; jeffreydahlke
 Author: Jeffrey A. Dahlke [aut, cre],
   Brenton M. Wiernik [aut],
   Wesley Gardiner [ctb] (Unit tests),
@@ -35,6 +35,5 @@ Author: Jeffrey A. Dahlke [aut, cre],
   John Sakaluk [ctb] (Code for funnel and forest plots),
   Yuejia (Mandy) Teng [ctb] (Testing)
 Maintainer: Jeffrey A. Dahlke <jdahlke@humrro.org>
-RdMacros: mathjaxr
 Repository: CRAN
-Date/Publication: 2022-07-11 07:50:02 UTC
+Date/Publication: 2022-08-26 12:30:07 UTC
