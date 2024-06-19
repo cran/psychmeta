@@ -10,8 +10,8 @@
 #' @param label_es Label for effect size (x-axis). Defaults to "Correlation (*r*)" for correlation meta-analyses, "Cohen's *d* (Hedges's *g*)" for d value meta-analyses, and "Effect size" for generic meta-analyses.
 #' @param conf_level Confidence regions levels to be plotted (default: .95, .99).
 #' @param conf_linetype Line types for confidence region boundaries. Length should be either 1 or equal to the length of conf_level.
-#' @param conf_fill Colors for confidence regions. Set to `NA` for transparent. Length should be either 1 or equal to to the length of conf_level.
-#' @param conf_alpha Transparency level for confidence regions. Length should be either 1 or equal to to the length of conf_level.
+#' @param conf_fill Colors for confidence regions. Set to `NA` for transparent. Length should be either 1 or equal to the length of conf_level.
+#' @param conf_alpha Transparency level for confidence regions. Length should be either 1 or equal to the length of conf_level.
 #' @param null_effect Null effect to be plotted for contour-enhanced funnel plots. If `NA`, not shown. If `NULL`, set to the null value for the effect size metric (0 for correlations and d values).
 #' @param null_conf_level Null-effect confidence regions levels to be plotted (default: .90, .95, .99).
 #' @param null_conf_linetype Line types for null-effect confidence region boundaries. Length should be either 1 or equal to the length of null_conf_level.
@@ -494,6 +494,7 @@ plot_forest <- function(ma_obj, analyses = "all", match = c("all", "any"), case_
 #' @author John Sakaluk and Brenton Wiernik
 #'
 #' @keywords internal
+#' @noRd
 .plot_funnel <- function(x,
                          label_es = "Effect Size",
                          conf_level = c(.95, .99),
@@ -856,8 +857,8 @@ plot_forest <- function(ma_obj, analyses = "all", match = c("all", "any"), case_
      if(nrow(mat) == 1) plot_dat$cite <- factor(plot_dat$cite, levels = c(levels(mat$cite), levels(dat$cite)))
 
      if(!is.null(x_limits)){
-          plot_dat$upperci[dat$upperci > max(x_limits)] <- max(x_limits)
-          plot_dat$lowerci[dat$lowerci < min(x_limits)] <- min(x_limits)
+          plot_dat$upperci[plot_dat$upperci > max(x_limits)] <- max(x_limits)
+          plot_dat$lowerci[plot_dat$lowerci < min(x_limits)] <- min(x_limits)
      }
 
      if(is.null(x_limits)){

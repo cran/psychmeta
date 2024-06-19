@@ -4,7 +4,7 @@
 \alias{conf.limits.nc.chisq}
 \title{Confidence limits for noncentral chi square parameters (function and documentation from package 'MBESS' version 4.4.3)
 Function to determine the noncentral parameter that leads to the observed \code{Chi.Square}-value,
-so that a confidence interval for the population noncentral chi-squrae value can be formed.}
+so that a confidence interval for the population noncentral chi-square value can be formed.}
 \usage{
 conf.limits.nc.chisq(
   Chi.Square = NULL,
@@ -33,16 +33,16 @@ conf.limits.nc.chisq(
 }
 \value{
 \itemize{
-     \item{Lower.Limit}{Value of the distribution with \code{Lower.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
-     \item{Prob.Less.Lower}{Proportion of cases falling below \code{Lower.Limit}}
-     \item{Upper.Limit}{Value of the distribution with \code{Upper.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
-     \item{Prob.Greater.Upper}{Proportion of cases falling above \code{Upper.Limit}}
+     \item{\code{Lower.Limit}: Value of the distribution with \code{Lower.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
+     \item{\code{Prob.Less.Lower}: Proportion of cases falling below \code{Lower.Limit}}
+     \item{\code{Upper.Limit}: Value of the distribution with \code{Upper.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
+     \item{\code{Prob.Greater.Upper}: Proportion of cases falling above \code{Upper.Limit}}
 }
 }
 \description{
 Confidence limits for noncentral chi square parameters (function and documentation from package 'MBESS' version 4.4.3)
 Function to determine the noncentral parameter that leads to the observed \code{Chi.Square}-value,
-so that a confidence interval for the population noncentral chi-squrae value can be formed.
+so that a confidence interval for the population noncentral chi-square value can be formed.
 }
 \details{
 If the function fails (or if a function relying upon this function fails), adjust the \code{Jumping.Prop} (to a smaller value).

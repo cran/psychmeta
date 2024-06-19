@@ -275,11 +275,14 @@ ma_r_order2 <- function(k, N = NULL, r = NULL, rho = NULL, var_r = NULL, var_r_c
 #'
 #' @param data Data frame of individual-correction information.
 #' @param type Type of correlation to be meta-analyzed: "ts" for true score, "vgx" for validity generalization with "X" as the predictor,
-#' "vgy" for for validity generalization with "X" as the predictor, and "all" for the complete set of results.
+#' "vgy" for for validity generalization with "Y" as the predictor, and "all" for the complete set of results.
 #' @param run_lean If TRUE, the meta-analysis will not generate a data object. Meant to speed up bootstrap analyses that do not require supplemental output.
 #' @param ma_arg_list List of arguments to be used in the meta-analysis function.
 #'
 #' @return A meta-analytic table and a data frame.
+#' 
+#' @keywords internal
+#' @noRd
 .ma_r_order2 <- function(data, type = "all", run_lean = FALSE, ma_arg_list){
 
      conf_level <- ma_arg_list$conf_level
@@ -635,6 +638,7 @@ ma_r_order2 <- function(k, N = NULL, r = NULL, rho = NULL, var_r = NULL, var_r_c
 #' @return A list object containing the results of bootstrapped second-order bare-bones meta-analyses of correlations
 #'
 #' @keywords internal
+#' @noRd
 .ma_r_order2_bb_boot <- function(data, i, ma_arg_list){
      data <- data[i,]
      out <- .ma_r_order2(data = data, type = "bb", run_lean = TRUE, ma_arg_list = ma_arg_list)
@@ -653,6 +657,7 @@ ma_r_order2 <- function(k, N = NULL, r = NULL, rho = NULL, var_r = NULL, var_r_c
 #' @return A list object containing the results of bootstrapped second-order individual-correction meta-analyses of correlations
 #'
 #' @keywords internal
+#' @noRd
 .ma_r_order2_ic_boot <- function(data, i, ma_arg_list){
      data <- data[i,]
      out <- .ma_r_order2(data = data, type = "ic", run_lean = TRUE, ma_arg_list = ma_arg_list)
@@ -670,6 +675,7 @@ ma_r_order2 <- function(k, N = NULL, r = NULL, rho = NULL, var_r = NULL, var_r_c
 #' @return A list object containing the results of bootstrapped second-order artifact-distribution meta-analyses of correlations
 #'
 #' @keywords internal
+#' @noRd
 .ma_r_order2_ad_boot <- function(data, i, ma_arg_list){
      data <- data[i,]
      out <- .ma_r_order2(data = data, type = "ad", run_lean = TRUE, ma_arg_list = ma_arg_list)

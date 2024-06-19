@@ -802,7 +802,7 @@ simulate_r_sample <- function(n, rho_mat, rel_vec = rep(1, ncol(rho_mat)),
 #' The \code{simulate_r_database} function generates databases of psychometric correlation data from sample-size parameters, correlation parameters, reliability parameters, and selection-ratio parameters.
 #' The output database can be provided in either a long format or a wide format.
 #' If composite variables are to be formed, parameters can also be defined for the weights used to form the composites as well as the selection ratios applied to the composites.
-#' This function will return a database of statistics as well as a database of parameters - the parameter database contains the actual study parameters for each simulated sample (without sampleing error) to allow comparisons between meta-analytic results computed from the statistics and the actual means and variances of parameters.
+#' This function will return a database of statistics as well as a database of parameters - the parameter database contains the actual study parameters for each simulated sample (without sampling error) to allow comparisons between meta-analytic results computed from the statistics and the actual means and variances of parameters.
 #' The \code{\link{merge_simdat_r}} function can be used to merge multiple simulated databases and the \code{\link{sparsify_simdat_r}} function can be used to randomly delete artifact information (a procedure commonly done in simulations of artifact-distribution methods).
 #'
 #' @param k Number of studies to simulate.
@@ -832,7 +832,7 @@ simulate_r_sample <- function(n, rho_mat, rel_vec = rep(1, ncol(rho_mat)),
 #' Values supplied as any argument with the suffix "params" can take any of three forms (see Examples for a demonstration of usage):
 #' \itemize{
 #' \item A vector of values from which study parameters should be sampled.
-#' \item A vector containing a mean with a variance or standard deviation. These values must be named "mean," "var," and "sd", respectively, for the program to recognize which value is which.
+#' \item A vector containing a mean with a variance or standard deviation. These values must be named "mean," "var," and "sd," respectively, for the program to recognize which value is which.
 #' \item A matrix containing a row of values (this row must be named "values") from which study parameters should be sampled and a row of weights (this row must be labeled 'weights') associated
 #' with the values to be sampled.
 #' \item A matrix containing a column of values (this column must be named "values") from which study parameters should be sampled and a column of weights (this column must be labeled 'weights') associated
@@ -1388,6 +1388,7 @@ sample_params <- function(param_list, k, as_desc, as_weights_rows, as_weights_co
 #' @return A vector of simulated values from a distribution bounded at 0 and 1
 #'
 #' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' \dontrun{
@@ -1412,6 +1413,7 @@ sample_params <- function(param_list, k, as_desc, as_weights_rows, as_weights_co
 #' @return A matrix of weighted descriptive statistics
 #'
 #' @keywords internal
+#' @noRd
 .descriptives_database <- function(dat, wt){
      desc_mat <- data.frame(apply(dat, 2, function(x) wt_dist(x = x, wt = wt, unbiased = FALSE)), stringsAsFactors = FALSE)
 

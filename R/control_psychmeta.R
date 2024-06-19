@@ -13,22 +13,22 @@
 #' @param collapse_method Character argument that determines how to collapse dependent studies. Options are "composite" (default), "average," and "stop."
 #' @param intercor The intercorrelation(s) among variables to be combined into a composite. Can be a scalar, a named vector with element named according to the names of constructs, or output from the \code{control_intercor} function. Default scalar value is .5.
 #' @param clean_artifacts If \code{TRUE}, multiple instances of the same construct (or construct-measure pair, if measure is provided) in the database are compared and reconciled with each other
-#' in the case that any of the matching entries within a study have different artifact values. When impute_method is anything other than "stop", this method is always implemented to prevent discrepancies among imputed values.
+#' in the case that any of the matching entries within a study have different artifact values. When \code{impute_method} is anything other than "stop", this method is always implemented to prevent discrepancies among imputed values.
 #' @param impute_artifacts If \code{TRUE}, artifact imputation will be performed (see \code{impute_method} for imputation procedures). Default is \code{FALSE} for artifact-distribution meta-analyses and \code{TRUE} otherwise.
 #' When imputation is performed, \code{clean_artifacts} is treated as \code{TRUE} so as to resolve all discrepancies among artifact entries before and after imputation.
 #' @param impute_method Method to use for imputing artifacts. Choices are:
 #' \itemize{
-#' \item{bootstrap_mod}{\cr Select random values from the most specific moderator categories available (default).}
-#' \item{bootstrap_full}{\cr Select random values from the full vector of artifacts.}
-#' \item{simulate_mod}{\cr Generate random values from the distribution with the mean and variance of observed artifacts from the most specific moderator categories available.
+#' \item{"bootstrap_mod": Select random values from the most specific moderator categories available (default).}
+#' \item{"bootstrap_full": Select random values from the full vector of artifacts.}
+#' \item{"simulate_mod": Generate random values from the distribution with the mean and variance of observed artifacts from the most specific moderator categories available.
 #' (uses \code{rnorm} for u ratios and \code{rbeta} for reliability values).}
-#' \item{simulate_full}{\cr Generate random values from the distribution with the mean and variance of all observed artifacts (uses \code{rnorm} for u ratios and \code{rbeta} for reliability values).}
-#' \item{wt_mean_mod}{\cr Replace missing values with the sample-size weighted mean of the distribution of artifacts from the most specific moderator categories available (not recommended).}
-#' \item{wt_mean_full}{\cr Replace missing values with the sample-size weighted mean of the full distribution of artifacts (not recommended).}
-#' \item{unwt_mean_mod}{\cr Replace missing values with the unweighted mean of the distribution of artifacts from the most specific moderator categories available (not recommended).}
-#' \item{unwt_mean_full}{\cr Replace missing values with the unweighted mean of the full distribution of artifacts (not recommended).}
-#' \item{replace_unity}{\cr Replace missing values with 1 (not recommended).}
-#' \item{stop}{\cr Stop evaluations when missing artifacts are encountered.}
+#' \item{"simulate_full": Generate random values from the distribution with the mean and variance of all observed artifacts (uses \code{rnorm} for u ratios and \code{rbeta} for reliability values).}
+#' \item{"wt_mean_mod": Replace missing values with the sample-size weighted mean of the distribution of artifacts from the most specific moderator categories available (not recommended).}
+#' \item{"wt_mean_full": Replace missing values with the sample-size weighted mean of the full distribution of artifacts (not recommended).}
+#' \item{"unwt_mean_mod": Replace missing values with the unweighted mean of the distribution of artifacts from the most specific moderator categories available (not recommended).}
+#' \item{"unwt_mean_full": Replace missing values with the unweighted mean of the full distribution of artifacts (not recommended).}
+#' \item{"replace_unity": Replace missing values with 1 (not recommended).}
+#' \item{"stop": Stop evaluations when missing artifacts are encountered.}
 #' }
 #' If an imputation method ending in "mod" is selected but no moderators are provided, the "mod" suffix will internally be replaced with "full".
 #' @param seed Seed value to use for imputing artifacts in a reproducible way. Default value is 42.

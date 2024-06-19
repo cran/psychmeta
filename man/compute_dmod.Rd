@@ -22,7 +22,7 @@ compute_dmod(
 )
 }
 \arguments{
-\item{data}{Data frame containing the data to be analyzed (if not a data frame, must be an object convertible to a data frame via the as.data.frame function).
+\item{data}{Data frame containing the data to be analyzed (if not a data frame, must be an object convertible to a data frame via the \code{as.data.frame()} function).
 The data set must contain a criterion variable, at least one predictor variable, and a categorical variable that identifies the group to which each case (i.e., row) in the data set belongs.}
 
 \item{group}{Name or column-index number of the variable that identifies group membership in the data set.}
@@ -52,7 +52,7 @@ If multiple predictors are specified, they will be combined into a regression-we
 
 \item{stratify}{Logical argument that indicates whether the random bootstrap sampling should be stratified (\code{TRUE}) or unstratified (\code{FALSE}; default).}
 
-\item{empirical_ci}{Logical argument that indicates whether the bootstrapped confidence invervals should be computed from the observed empirical distributions (\code{TRUE}) or computed using
+\item{empirical_ci}{Logical argument that indicates whether the bootstrapped confidence intervals should be computed from the observed empirical distributions (\code{TRUE}) or computed using
 bootstrapped means and standard errors via the normal-theory approach (\code{FALSE}).}
 
 \item{cross_validate_wts}{Only relevant when multiple predictors are specified and bootstrapping is performed.
@@ -62,18 +62,18 @@ or if a new set of weights should be derived during each iteration of the bootst
 \value{
 If bootstrapping is selected, the list will include:
   \itemize{
-    \item {\code{point_estimate}} {A matrix of effect sizes (\eqn{d_{Mod_{Signed}}}{d_Mod_Signed},
+    \item {\code{point_estimate}: A matrix of effect sizes (\eqn{d_{Mod_{Signed}}}{d_Mod_Signed},
     \eqn{d_{Mod_{Unsigned}}}{d_Mod_Unsigned}, \eqn{d_{Mod_{Under}}}{d_Mod_Under},
     \eqn{d_{Mod_{Over}}}{d_Mod_Over}), proportions of under- and over-predicted criterion scores,
     minimum and maximum differences, and the scores associated with minimum and maximum differences.
     All of these values are computed using the full data set.}
-    \item {\code{bootstrap_mean}} {A matrix of the same statistics as the \code{point_estimate} matrix,
+    \item {\code{bootstrap_mean}: A matrix of the same statistics as the \code{point_estimate} matrix,
      but the values in this matrix are the means of the results from bootstrapped samples.}
-    \item {\code{bootstrap_se}} {A matrix of the same statistics as the \code{point_estimate} matrix,
+    \item {\code{bootstrap_se}: A matrix of the same statistics as the \code{point_estimate} matrix,
      but the values in this matrix are bootstrapped standard errors (i.e., the standard deviations of the results from bootstrapped samples).}
-    \item {\code{bootstrap_CI_Lo}} {A matrix of the same statistics as the \code{point_estimate} matrix,
+    \item {\code{bootstrap_CI_Lo}: A matrix of the same statistics as the \code{point_estimate} matrix,
      but the values in this matrix are the lower confidence bounds of the results from bootstrapped samples.}
-    \item {\code{bootstrap_CI_Hi}} {A matrix of the same statistics as the \code{point_estimate} matrix,
+    \item {\code{bootstrap_CI_Hi}: A matrix of the same statistics as the \code{point_estimate} matrix,
      but the values in this matrix are the upper confidence bounds of the results from bootstrapped samples.}
   }
   If no bootstrapping is performed, the output will be limited to the \code{point_estimate} matrix.

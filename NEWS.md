@@ -1,6 +1,14 @@
+# psychmeta 2.7.0 (2024-06-19)
+
+- Updates to documentation.
+
+- Updates to range adjustment methods for ryy artifacts. 
+
+
 # psychmeta 2.6.5 (2022-08-25)
 
 - Minor maintenance update. Per feedback from CRAN, we replaced `{mathjaxr}`-based equations with katex-based questions, which R >= 4.2.0 supports natively for HTML documentation.
+
 - Removed `psychmeta_news()` function. Use `news(package = "psychmeta")` instead.
 
 

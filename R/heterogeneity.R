@@ -29,7 +29,7 @@
 #'      \item{\code{file_drawer}}{Fail-safe \eqn{N} and \eqn{k} statistics (file-drawer analyses). These statistics should not be used to evaluate publication bias, as they counterintuitively suggest \emph{less} when publication bias is strong (Becker, 2005). However, in the absence of publication bias, they can be used as an index of second-order sampling error (how likely is a mean effect to reduce to the specified value with additional studies?). The confidence interval around the mean effect can be used more directly for the same purpose.}
 #'
 #'      Results are reported using computation methods described by Schmidt and Hunter.
-#'      For barebones and indivdiual-correction meta-analyses, results are also
+#'      For barebones and individual-correction meta-analyses, results are also
 #'      reported using computation methods described by DerSimonian and Laird,
 #'      outlier-robust computation methods, and, if weights from \pkg{metafor}
 #'      are used, heterogeneity results from \pkg{metafor}.
@@ -465,6 +465,7 @@ heterogeneity <- function(ma_obj, es_failsafe = NULL,
 #' @md
 #'
 #' @keywords internal
+#' @noRd
 .heterogeneity <- function(mean_es, var_es, var_pre, var_res,
                            var_e = NA, var_art = NA,
                            wt_vec, N, k, es_vec, vare_vec,
@@ -665,9 +666,12 @@ heterogeneity <- function(ma_obj, es_failsafe = NULL,
 #' @param Q_r The Q_r statistic.
 #' @param wi Vector of inverse within-study sampling variances.
 #'
-#' @author  Lifeng Lin and Haitao Chu
+#' @author  Lifeng Lin achind Haitao Chu
 #'
 #' @return tau_r_squared
+#' 
+#' @keywords internal
+#' @noRd
 .tau_squared_r_solver <- function(Q_r, wi) {
      f <- function(tau_squared, Q_r, wi) {
        sum(sqrt(1 - wi / sum(wi) + tau_squared * (wi - 2 * wi^2 / sum(wi) + wi * sum(wi^2) / (sum(wi))^2))) - Q_r * sqrt(pi / 2)
@@ -693,6 +697,9 @@ heterogeneity <- function(ma_obj, es_failsafe = NULL,
 #' @author  Lifeng Lin and Haitao Chu
 #'
 #' @return tau_r_squared
+#' 
+#' @keywords internal
+#' @noRd
 .tau_squared_m_solver <- function(Q_m, wi, k) {
      f <- function(tau_squared, Q_m, wi) sum(sqrt(1 + wi * tau_squared)) - Q_m * sqrt(pi / 2)
 
@@ -784,7 +791,7 @@ limits_tau <- function(var_es, var_pre, k, method = c("profile_var_es", "profile
 
 #' Confidence limits for noncentral chi square parameters (function and documentation from package 'MBESS' version 4.4.3)
 #' Function to determine the noncentral parameter that leads to the observed \code{Chi.Square}-value,
-#' so that a confidence interval for the population noncentral chi-squrae value can be formed.
+#' so that a confidence interval for the population noncentral chi-square value can be formed.
 #'
 #' @param Chi.Square the observed chi-square value
 #' @param conf.level the desired degree of confidence for the interval
@@ -799,10 +806,10 @@ limits_tau <- function(var_es, var_pre, k, method = c("profile_var_es", "profile
 #'
 #' @return
 #' \itemize{
-#'      \item{Lower.Limit}{Value of the distribution with \code{Lower.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
-#'      \item{Prob.Less.Lower}{Proportion of cases falling below \code{Lower.Limit}}
-#'      \item{Upper.Limit}{Value of the distribution with \code{Upper.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
-#'      \item{Prob.Greater.Upper}{Proportion of cases falling above \code{Upper.Limit}}
+#'      \item{\code{Lower.Limit}: Value of the distribution with \code{Lower.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
+#'      \item{\code{Prob.Less.Lower}: Proportion of cases falling below \code{Lower.Limit}}
+#'      \item{\code{Upper.Limit}: Value of the distribution with \code{Upper.Limit} noncentral value that has at its specified quantile \code{Chi.Square}}
+#'      \item{\code{Prob.Greater.Upper}: Proportion of cases falling above \code{Upper.Limit}}
 #' }
 #'
 #' @author Ken Kelley (University of Notre Dame; \email{KKelley@@ND.edu}), Keke Lai (University of California--Merced)
